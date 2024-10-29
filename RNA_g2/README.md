@@ -501,3 +501,12 @@ sbatch counter.sh
 </details>
 
 # Visualization
+# Referances 
+
+
+<details>
+<summary> Referances </summary>
+1. Huang, N. et al. Natural display of nuclear-encoded RNA on the cell surface and its impact on cell interaction. Genome biology 21, 1–23 (2020).
+
+
+</details>
