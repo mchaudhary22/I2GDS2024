@@ -1,6 +1,6 @@
 # RNA-Seq-Pipeline (Jaret & Lili)
 
-<img src=https://github.com/user-attachments/assets/5f0b5aea-1582-48be-8136-25f542fd7f56 width=40% height=40%>
+<img src=https://github.com/user-attachments/assets/939601c0-5314-47e8-8fbc-b7464a9e4c8e width=30% height=30%>
 
 
 ## Introduction
