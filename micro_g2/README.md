@@ -6,7 +6,7 @@ Ensure the following dependencies are installed to run the pipeline:
 
 - fastp v.0.23.4
 - SPAdes v.4.0.0
-- Checkm2 v.1.0.2
+- checkm2 v.1.0.2
 
 ## Data download
 Download genomic data from [NCBI Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra) using the [SRA Toolkit v.3.1.1](https://github.com/ncbi/sra-tools).
