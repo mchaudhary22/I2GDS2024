@@ -13,6 +13,7 @@ Contact: Jaret Arnold (amichael19@vt.edu) or Lili Zebluim (liliz@vt.edu)
 To do (before finalized):
 - [x] Upload new pipeline image 
 - [ ] Test All Code Blocks
+- [ ] Fix i dont know image
 - [ ] Add info on downloading the file
 - [ ] Read through/edit blurbs and code snippets
 - [x] Add References 
@@ -183,9 +184,11 @@ STAR --runThreadN 6 \
 ```bash
 
 STAR --runThreadN 6 \
---genomeDir /path/to/genomeindex \
---readFilesIn /path/to/read.fq \
---outSAMtype BAM SortedByCoordinate \
+--genomeDir /path/to/genomeindex/ \ #location of genome index previously created
+--readFilesIn /path/to/D0C1_1.fq.gz /path/to/D0C1_2.fq.gz \ #path to forward reads separated by a space and the path to the reverse reads
+--readFilesCommand zcat \ #to read files that are gzip compressed
+--outSAMtype BAM SortedByCoordinate #output as BAM which is sorted by coord
+
 
 #UNTESTED
 ```
