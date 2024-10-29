@@ -139,7 +139,7 @@ MINLEN:36
 After trimming, it is advisable to generate a second FastQC report to assess the success of trimming. For example:
 
 ```bash
-fastqc *.trim.fastq -o .
+fastqc *.trim.fq.gz -o .
 
 ```
 
