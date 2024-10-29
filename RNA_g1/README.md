@@ -461,10 +461,15 @@ Installing Feature Counts
 https://www.youtube.com/watch?v=2VhNCYe8nQw
 
 https://subread.sourceforge.net/featureCounts.html
+
 https://github.com/alexdobin/STAR
+
 https://github.com/timflutre/trimmomatic
+
 http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf
+
 https://github.com/s-andrews/FastQC
+
 https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 <add citations and any other refs here>
