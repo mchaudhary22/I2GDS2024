@@ -18,6 +18,7 @@ The code is located in the following path: `code/`.
     - `fastp.py` in `code/` is written for single-end data, need to modify if your data is paired-end
   - **Expected output**: `_QC.fastq.gz` gzip-compressed file
   - Run the following to execute the code.
+  - test to see if it works
     
     ```
     python3 fastp.py
