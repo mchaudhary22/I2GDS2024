@@ -1,7 +1,12 @@
+# #RNA-seq pipeline (Matt and Abigayle)
+Contact: Matt Gilfus (marrett@vt.edu) and Abigayle Pollock (abigaylep@vt.edu)
+
 # Using this guide
 Each step in the RNAseq pipeline RNA2seq is laid out here step by step
 
-Please read each step in its entirety before testing any of the code as there is sample code included in the explanations, as well as exact copies of the code that can be used to duplicate this project at tinkercliffs1.arc.vt.edu
+Please read each step in its entirety before testing any of the code. There is sample code included in the explanations, as well as exact copies of the code that can be used to duplicate this project at tinkercliffs1.arc.vt.edu
+
+For additional information on quality control, trimming, and alignment see RNA Group 2!
 
 # RNA2-seq Pipeline
 
@@ -18,7 +23,7 @@ This project analyzes RNA-seq data. It includes:
 <summary> Hard requirements </summary>
 
     
-It is necessary to install these programs with conda in a single environment before beginning.to proceed
+It is necessary to install these programs with conda in a single environment before beginning.
 To install the minimum programs needed in a conda environment run
     
 ```
@@ -276,7 +281,7 @@ if all checks pass you now have the genomic data you need in this directory/ncbi
 <details>
 <summary> HISAT2 indexing overview  </summary>
 
-Now you can begin to build the reference files the HISA2 will use, I recommend just keeping these here with the genome but you can set paths to folders as needed
+Now you can begin to build the reference files the HISAT2 will use, I recommend just keeping these here with the genome but you can set paths to folders as needed
 
 the generic form of this command is 
 ```
@@ -332,7 +337,7 @@ sbatch indexer.sh
 ```
 this will produce 8 files geneIndex.1-8.ht2
 
-Once the indexing process has finished HISAT2 can now be used to produce SAM files from the fastq files you produced in the trimmomatic step (or any fastq files if you are skipping steps but this is not recommended if you are trying to reproduce this project)
+Once the indexing process has finished, HISAT2 can now be used to produce SAM files from the fastq files you produced in the trimmomatic step (or any fastq files if you are skipping steps but this is not recommended if you are trying to reproduce this project)
 
 </details>
 
@@ -491,3 +496,5 @@ run
 sbatch counter.sh
 ```
 </details>
+
+# Visualization
