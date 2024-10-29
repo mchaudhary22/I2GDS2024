@@ -11,11 +11,11 @@ This repo explains a basic pipeline for RNA-Seq analysis. It was developed as pa
 Contact: Jaret Arnold (amichael19@vt.edu) or Lili Zebluim (liliz@vt.edu)
 
 To do (before finalized):
-- [ ] Upload new pipeline image 
+- [x] Upload new pipeline image 
 - [ ] Test All Code Blocks
 - [ ] Add info on downloading the file
 - [ ] Read through/edit blurbs and code snippets
-- [ ] Add References 
+- [x] Add References 
 
 ## Downloading Test files
 CHANGE THIS TO MY EXAMPLE FILES
@@ -169,7 +169,7 @@ STAR --runThreadN 6 \
 --genomeFastaFiles /path/to/genomicfasta \
 --sjdbGTFfile /path/to/genomeGTF
 
-#UNTESTED
+#TESTED
 ```
 <details>
 <summary> Output file descriptions </summary>
