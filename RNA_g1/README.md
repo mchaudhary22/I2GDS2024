@@ -8,6 +8,8 @@
 This page is a work in progress!
 This repo explains a basic pipeline for RNA-Seq analysis. It was developed as part of curriculum for Virginia Tech's Intro to Genomic Data Science course. This pipeline runs in Linux and relies on [FASTQC](https://github.com/s-andrews/FastQC), [Trimmomatic](https://github.com/timflutre/trimmomatic), [STAR](https://github.com/alexdobin/STAR), and [Featurecounts](https://subread.sourceforge.net/featureCounts.html). This example pipeline uses single-end FastQ reads, but it could be altered for use with paired end data (see [example slurm scripts](#slurm-job-examples)).
 
+Throughout the code snippets in this repo we have attempted to make things as clear as possible. However, some paths may need to be changed depending on your method of installation or location of your files. These areas where changes are required before running will be noted with three asterisks (***) 
+
 Contact: Jaret Arnold (amichael19@vt.edu) or Lili Zebluim (liliz@vt.edu)
 
 To do (before finalized):
@@ -178,14 +180,27 @@ STAR --runThreadN 6 \
 </details>
 
 > [!WARNING]
-> Both STAR genome indexing and read mapping can be computationally intensive and require time. If working on ARC these should be submitted using slurm to efficiently schedule them. See the [example slurm scripts](#slurm-job-examples).
+> Both STAR genome indexing and read mapping can be computationally intensive and require time. If working on ARC these should be submitted using slurm to efficiently schedule them. For Readmapping we have provided some example settings, but these can vary depending on your job and data size. To create a slurm batch job, simply nano <desiredfilename>.sh and input the your sbatch settings at the top of the file below the shebang. You may have to convert from dos to unix linebreaks if on windows using dos2unix <filename>. See the [example slurm scripts](#slurm-job-examples). 
 
 #### Genome Read Mapping:
 ```bash
+#!/bin/bash
+# STAR Read Mapping - Test
+#SBATCH --job-name=STAR-readmapping-test
+#SBATCH --cpus-per-task=6
+#SBATCH --mem=64G
+#SBATCH --ntasks=1             
+#SBATCH -A <allocation> #Don't forget to put in your allocation ***
+#SBATCH --time=48:00:00
+#SBATCH -p normal_q
+#SBATCH --output=STARslurmlogtest.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=<user> #Don't forget your email username ***
 
-STAR --runThreadN 6 \
---genomeDir /path/to/genomeindex/ \ #location of genome index previously created
---readFilesIn /path/to/D0C1_1.fq.gz /path/to/D0C1_2.fq.gz \ #path to forward reads separated by a space and the path to the reverse reads
+
+/path/to/STAR-2.7.11b/source/STAR --runThreadN 6 \ #run STAR by providing your full path to the .exe and set the threads
+--genomeDir /path/to/genomeindex/ \ #location of genome index previously created ***
+--readFilesIn /path/to/D0C1_1.fq.gz /path/to/D0C1_2.fq.gz \ #path to forward reads separated by a space and the path to the reverse reads ***
 --readFilesCommand zcat \ #to read files that are gzip compressed
 --outSAMtype BAM SortedByCoordinate #output as BAM which is sorted by coord
 
@@ -199,7 +214,7 @@ STAR --runThreadN 6 \
 
 
 ## FeatureCounts
-<Blurb about Featurecounts>
+Feature counts is used to produce a matrix of genes and the count of their transcripts. 
 <need to check installation instructions>
 
 #### Installation via conda:
