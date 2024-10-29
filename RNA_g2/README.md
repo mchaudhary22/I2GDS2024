@@ -17,7 +17,8 @@ This project analyzes RNA-seq data. It includes:
 - Preprocessing with Trimmomatic
 - Alignment with HISAT2
 - Quantification with featureCounts (installed as subreads)
-<img width="1096" alt="Screenshot 2024-10-29 at 11 44 53 AM" src="https://github.com/user-attachments/assets/ddaacab8-ab44-40f1-b7ce-05eae876ba60">
+<img width="1100" alt="Screenshot 2024-10-29 at 12 25 57 PM" src="https://github.com/user-attachments/assets/ed70952e-f9f6-4b4d-8345-589fdfaa1cce">
+
 
 # Set up RNA2-seq environment
 
