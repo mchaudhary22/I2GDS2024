@@ -171,7 +171,7 @@ STAR --runThreadN 6 \
 ```
 <details>
 <summary> Output file descriptions </summary>
-<img src=https://github.com/user-attachments/assets/f2f91c6d-dc1a-470e-9087-fa28a96b18db width=75% height=75%>
+<img src=https://github.com/user-attachments/assets/f2f91c6d-dc1a-470e-9087-fa28a96b18db width=100% height=100%>
 </details>
 
 > [!WARNING]
@@ -189,7 +189,7 @@ STAR --runThreadN 6 \
 ```
 <details>
 <summary> Output file descriptions </summary>
-<img src=https://github.com/user-attachments/assets/28f4b1b2-5b5b-4f8a-b03d-07b3ab967de3 width=75% height=75%>
+<img src=https://github.com/user-attachments/assets/28f4b1b2-5b5b-4f8a-b03d-07b3ab967de3 width=100% height=100%>
 </details>
 
 
