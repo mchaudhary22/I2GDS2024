@@ -1,12 +1,13 @@
-# #RNA-seq pipeline (Matt and Abigayle)
+# RNA-seq pipeline (Matt and Abigayle)
 Contact: Matt Gilfus (marrett@vt.edu) and Abigayle Pollock (abigaylep@vt.edu)
 
+This repo was created through the Introduction to Genomic Data Science Class at Virginia Tech. For another RNAseq pipeline example, see RNA G2!
+
 # Using this guide
-Each step in the RNAseq pipeline RNA2seq is laid out here step by step
+Each step in the RNAseq pipeline RNA2seq is laid out here step by step. Example data used for this project can be found at: **Insert link to paper here**
 
 Please read each step in its entirety before testing any of the code. There is sample code included in the explanations, as well as exact copies of the code that can be used to duplicate this project at tinkercliffs1.arc.vt.edu
 
-For additional information on quality control, trimming, and alignment see RNA Group 2!
 
 # RNA2-seq Pipeline
 
@@ -51,7 +52,7 @@ conda install -c bioconda samtools -y
 
 </details>
 
-# SRA-tools
+# Data Retrieval via SRA-tools
 
 </details>
 
