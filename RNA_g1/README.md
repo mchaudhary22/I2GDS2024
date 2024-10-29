@@ -1,6 +1,6 @@
 # RNA-Seq-Pipeline (Jaret & Lili)
 
-<img src="https://github.com/user-attachments/assets/4e5f4768-09be-4302-809c-eff8fbda234f" width=25% height=25%>
+<img src=https://github.com/user-attachments/assets/30847387-3203-4849-8df3-f472f45e8954 width=40% height=40%>
 
 ## Introduction
 
@@ -89,7 +89,7 @@ wget https://github.com/usadellab/Trimmomatic/files/5854859/Trimmomatic-0.39.zip
 unzip Trimmomatic-0.39.zip
 java -jar /path/to/Trimmomatic-0.39/trimmomatic-0.39.jar 
 
-#UNTESTED
+#TESTED
 ```
 
 </details>
@@ -100,9 +100,13 @@ java -jar Trimmomatic-0.39/trimmomatic-0.39.jar SE \
 -trimlog trimlog.txt \
 demo.fastq \
 demo.trim.fastq \
-ILLUMINACLIP:TruSeq3-SE:2:30:10 TRAILING:10 \
+ILLUMINACLIP:TruSeq3-SE:2:30:10 \
+LEADING:3 \
+TRAILING:3 \
+SLIDINGWINDOW:4:20 \
+MINLEN:36
 
-#UNTESTED
+#TESTED
 ```
 
 > [!NOTE]
@@ -110,14 +114,7 @@ ILLUMINACLIP:TruSeq3-SE:2:30:10 TRAILING:10 \
 
 Explanation of common trimming parameters: 
 
-**ILLUMINACLIP** - cuts adapters and illumina-specific reads 
-
-**LEADING** - cuts bases off from the start of a read if below threshold
-
-**TRAILING** - cuts bases off from the end of the read if below threshold 
-
-**MINLEN** - drops the read if it is below a specified length 
-
+<img src="https://github.com/user-attachments/assets/013ce5ba-483c-4e31-aede-cf344c9a3eb9" width=75% height=75%>
 
 <details>
   
@@ -138,7 +135,6 @@ ILLUMINACLIP:TruSeq3-SE:2:30:10 TRAILING:10 \
 
 </details>
 
-
 After trimming, it is advisable to generate a second FastQC report to assess the success of trimming. For example:
 
 ```bash
@@ -158,7 +154,7 @@ cd STAR-2.7.11b
 cd STAR/source
 make STAR
 
-#UNTESTED
+#TESTED
 ```
 
 #### Genome indexing:
@@ -173,6 +169,11 @@ STAR --runThreadN 6 \
 
 #UNTESTED
 ```
+<details>
+<summary> Output file descriptions </summary>
+<img src=https://github.com/user-attachments/assets/f2f91c6d-dc1a-470e-9087-fa28a96b18db width=75% height=75%>
+</details>
+
 > [!WARNING]
 > Both STAR genome indexing and read mapping can be computationally intensive and require time. If working on ARC these should be submitted using slurm to efficiently schedule them. See the [example slurm scripts](#slurm-job-examples).
 
@@ -186,7 +187,10 @@ STAR --runThreadN 6 \
 
 #UNTESTED
 ```
-
+<details>
+<summary> Output file descriptions </summary>
+<img src=https://github.com/user-attachments/assets/28f4b1b2-5b5b-4f8a-b03d-07b3ab967de3 width=75% height=75%>
+</details>
 
 
 ## FeatureCounts
@@ -437,6 +441,23 @@ featureCounts -a $ANNO_DIR -o $OUTPUT_DIR \
 </details>
 
 ## References
+Data Download and workflow
+https://www.youtube.com/watch?v=lG11JjovJHE
+
+Installing FastQC
+https://www.youtube.com/watch?v=5nth7o_-f0Q 
+
+Installing Trimmomatic
+https://www.youtube.com/watch?v=sG6b1aGEdCQ
+
+Installing STAR
+https://www.youtube.com/watch?v=RhEinNds1uc&t=0s
+
+Making a Genomic Index in STAR
+https://www.youtube.com/watch?v=Ju6PtQD-H34&t=320s
+
+Installing Feature Counts 
+https://www.youtube.com/watch?v=2VhNCYe8nQw
 
 https://subread.sourceforge.net/featureCounts.html
 https://github.com/alexdobin/STAR
