@@ -4,9 +4,9 @@ This pipeline integrates three essential tools — fastp, SPAdes, and CheckM —
 ## Dependencies & Version Information
 Ensure the following dependencies are installed to run the pipeline:
 
-fastp v.0.23.4
-SPAdes v.4.0.0
-CheckM v.1.0.2
+- fastp v.0.23.4
+- SPAdes v.4.0.0
+- CheckM v.1.0.2
 
 ## Data download
 Download genomic data from [NCBI Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra) using the [SRA Toolkit v.3.1.1](https://github.com/ncbi/sra-tools).
@@ -20,8 +20,8 @@ Use the following command to download SRA Toolkit:
 ```
 curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-mac64.tar.gz
 ```
-Use ‘fastq-dump SRR-of-interest’ to retrieve the file that you want
-fastq-dump SRR21285231
+
+Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
 ### 1. To perform adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 The code is located in the following path: `code/`.
