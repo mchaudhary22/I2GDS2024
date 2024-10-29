@@ -26,7 +26,7 @@ To download genomic data, install the **NCBI CLI tool** using Conda
 datasets download genome accession GCA_041080895.1 --output-dir/path/to/save
 ```
 
-**Note**: Use the following command to download the provided genome assemblies. The “datasets” CLI tool can be used for downloading the data when the assembly accessions are provided. The command script is in "01_data_download.sh", and the list of genomes is specified in "complete_genome_list.txt".
+**Note**: Use the following command to download the provided genome assemblies. The “datasets” CLI tool can be used for downloading the data when the assembly accessions are provided. The command script is in "01_data_download.sh", and the list of genomes is specified in "Genome_list.txt".
 
 <details>
 <summary>01_data_download.sh<summary>
