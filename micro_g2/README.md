@@ -1,5 +1,27 @@
 ## Pipeline for assembling short read sequence data
-Project description: Preprocessing FASTQ files and assembling raw short-read sequencing data.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM.
+
+## Dependencies & Version Information
+Ensure the following dependencies are installed to run the pipeline:
+
+fastp v.0.23.4
+SPAdes v.4.0.0
+CheckM v
+
+## Data download
+Download genomic data from [NCBI Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra) using the [SRA Toolkit v.3.1.1](https://github.com/ncbi/sra-tools).
+- The SRA Toolkit is a collection of tools and libraries that allow users to access and manipulate data from SRA (a repository of molecular data from high-throughput sequencing platforms).
+
+Useful tutorial videos for installing SRA Toolkit and downloading sequencing data from NCBI SRA
+- [Download Fastq or SRA files - Whole Genome Sequencing Analysis. Step 1](https://www.youtube.com/watch?v=dZGf8D2WO44)
+- [Downloading sequencing data on ubuntu/linux - SRA toolki](https://www.youtube.com/watch?v=E1n-Z2HDAD0)
+
+Use the following command to download SRA Toolkit:
+```
+curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-mac64.tar.gz
+```
+Use ‘fastq-dump SRR-of-interest’ to retrieve the file that you want
+fastq-dump SRR21285231
 
 ### 1. To perform adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 The code is located in the following path: `code/`.
@@ -18,7 +40,6 @@ The code is located in the following path: `code/`.
     - `fastp.py` in `code/` is written for single-end data, need to modify if your data is paired-end
   - **Expected output**: `_QC.fastq.gz` gzip-compressed file
   - Run the following to execute the code.
-  - test to see if it works
     
     ```
     python3 fastp.py
