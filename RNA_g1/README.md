@@ -20,11 +20,12 @@ To do (before finalized):
 CHANGE THIS TO MY EXAMPLE FILES
 To download the files used in this test workflow, run the following commands in your linux environment. 
 ```bash
-wget 'https://drive.usercontent.google.com/download?id=1DGHjbhcRy_zTm6H9C_AUpkzBML-JhtA3&export=download&authuser=1&confirm=t' -O demo.fastq
-wget 'https://genome-idx.s3.amazonaws.com/hisat/grch38_genome.tar.gz'
-wget 'http://ftp.ensembl.org/pub/release-106/gtf/homo_sapiens/Homo_sapiens.GRCh38.106.gtf.gz'
-```
+wget 'https://drive.usercontent.google.com/download?id=10lMnWkwufamCqlRiHaN_8gL3u9UmK90f&export=download&authuser=1&confirm=t' -O D0C1_1.fq.gz  #This is the forward read
+wget 'https://drive.usercontent.google.com/download?id=1mWzTnFHuSoB43Ma0cfOSMmrK0-DARubV&export=download&authuser=1&confirm=t' -O D0C1_2.fq.gz  #This is the reverse read
+wget 'https://drive.usercontent.google.com/download?id=160nLEzOYqO-fQ8_Pgbe5k0QuGeRZ3s-Z&export=download&authuser=1&confirm=t' -O arabidopsisgenome.gtf #This is the (arabidopsis) gtf file, used in aligning
+wget 'https://drive.usercontent.google.com/download?id=1ZoM6vfRoSWphNLPwxcnT1fsXLFdbFprd&export=download&authuser=1&confirm=t' -O arabidopsisgenome.fa #This is the (arabidopsis) genomic fasta file
 
+```
 
 ## FastQC
 FastQC will be used to assess the quality of the raw reads and generate an html report detailing sequence quality, adapter contamination, GC content, etc. If FastQC is available on your computing environment, installation may be as easy as invoking module load. If not, try installing via the download. 
@@ -57,11 +58,9 @@ fastqc --version #testing if install worked
 #### Running FastQC:
 
 ```bash
-cd /path/to/reads    #move to location where you downloaded reads
-fastqc demo.fastq -o .
-#outputs in current directory (-o .)
-#alternatively consider using the wildcard operator (*) for many files:
-#fastqc *.fastq -o . 
+#cd /path/to/reads    #move to location of reads (if neccesary) 
+fastqc *.fq.gz -o .
+#runs fastqc on any files ending in .fq.gz and outputs in current file (-o)
 
 #TESTED
 ```
@@ -94,17 +93,15 @@ java -jar /path/to/Trimmomatic-0.39/trimmomatic-0.39.jar
 
 </details>
 
-#### Trimming single-end reads:
+#### Trimming paired-end reads:
 ```bash
-java -jar Trimmomatic-0.39/trimmomatic-0.39.jar SE \
+
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
 -trimlog trimlog.txt \
-demo.fastq \
-demo.trim.fastq \
-ILLUMINACLIP:TruSeq3-SE:2:30:10 \
-LEADING:3 \
-TRAILING:3 \
-SLIDINGWINDOW:4:20 \
-MINLEN:36
+D0C1_1.fq.gz D0C1_2.fq.gz \
+D0C1_1.trim.fq.gz D0C1_1un.trim.fq.gz \
+D0C1_2.trim.fq.gz D0C1_2un.trim.fq.gz \
+ILLUMINACLIP:/apps/packages/tinkercliffs-rome/trimmomatic/0.39/TruSeq3-PE.fa:2:30:10 MINLEN:30 HEADCROP:10 
 
 #TESTED
 ```
@@ -120,17 +117,21 @@ Explanation of common trimming parameters:
   
 <summary> 
 
-  #### Trimming paired-end reads: 
+  #### Trimming single-end reads: 
 </summary>
 
 ```bash
-java -jar Trimmomatic-0.39/trimmomatic-0.39.jar PE \
+java -jar Trimmomatic-0.39/trimmomatic-0.39.jar SE \
 -trimlog trimlog.txt \
-sample_1.fastq sample_2.fastq \
-sample_1.trim.fastq sample_2.trim.fastq \
-ILLUMINACLIP:TruSeq3-SE:2:30:10 TRAILING:10 \
+example.fastq \
+example.trim.fastq \
+ILLUMINACLIP:TruSeq3-SE:2:30:10 \
+LEADING:3 \
+TRAILING:3 \
+SLIDINGWINDOW:4:20 \
+MINLEN:36
 
-#UNTESTED
+#TESTED
 ```
 
 </details>
@@ -138,7 +139,7 @@ ILLUMINACLIP:TruSeq3-SE:2:30:10 TRAILING:10 \
 After trimming, it is advisable to generate a second FastQC report to assess the success of trimming. For example:
 
 ```bash
-fastqc demo.trim.fastq -o .
+fastqc *.trim.fastq -o .
 
 ```
 
