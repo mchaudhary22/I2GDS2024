@@ -23,7 +23,7 @@ curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curre
 
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
-### 1. To perform adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
+## Step 1. To perform adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 The code is located in the following path: `code/`.
 - `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
   - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run QC.
