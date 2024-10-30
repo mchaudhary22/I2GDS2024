@@ -1,5 +1,5 @@
 ## Pipeline for assembling short read sequence data
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline is located at the following path: `code/spades.sh`.
 
 ## Dependencies & Version Information
 Ensure the following dependencies are installed to run the pipeline:
@@ -22,17 +22,16 @@ curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curre
 See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) for more detailed instructions on how to install SRA Toolkit.\
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
-## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
-The code is located in the following path: `code/fastp.py`.
-- `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
-  - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
-  - Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
-  - Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
-    
-    ```
-    wget http://opengene.org/fastp/fastp
-    chmod a+x ./fastp
-    ```
+## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)\
+Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
+```
+wget http://opengene.org/fastp/fastp
+chmod a+x ./fastp
+```
+  - `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
+    - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
+    - Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
+  - 
   - **Input**: FASTQ files (either single-end or paired-end)
     - for single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
     - for paired-end data, specify read2 input by `-I` or `--in2`, and specify read2 output by `-O` or `--out2`.
@@ -43,12 +42,8 @@ The code is located in the following path: `code/fastp.py`.
     ```
     python3 fastp.py
     ```
-## Step 2: Assembly using [SPAdes](https://doi.org/10.1089/cmb.2012.0021)
-The code is located in the following path: `code/spades.sh`.
-- `spades.sh` : Linux bash script to assemble quality-filtered and trimmed reads into contigs.
-  - **note to Ying-Xian to edit this line** This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run QC.
-  - **note to Ying-Xian to edit this line** Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
-  - Install `spades` by following the instructions at the [GitHub](https://github.com/ablab/spades). An alternative method that was used in this tutorial was installing SPAdes into a Anaconda virtual environment using the following code:
+## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)\
+- Install `spades` by following the instructions at the [GitHub](https://github.com/ablab/spades). An alternative method that was used in this tutorial was installing SPAdes into a Anaconda virtual environment using the following code:
     ```
     module load Anaconda3
     conda create --name SPAdes_v4.0.0_env
@@ -56,6 +51,8 @@ The code is located in the following path: `code/spades.sh`.
     conda install bioconda::spades
     ```
   - SPAdes v4.0.0 was used in this tutorial. To ensure the same version rather than the most recent version of SPAdes is installed, specify `conda install bioconda::spades=4.0.0`.
+- `spades.sh`: Bash script to automate genome assembly using the SPAdes assembler.
+
 
 
 
@@ -65,3 +62,5 @@ You will want to make sure that this code is present at the top of your script f
     module load Anaconda3
     source activate SPAdes_v4.0.0_env
 ```
+
+## Step 3: To assesses the quality of genome assemblies using [CheckM](https://genome.cshlp.org/content/25/7/1043)
