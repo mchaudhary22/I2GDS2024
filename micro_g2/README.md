@@ -22,11 +22,11 @@ curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curre
 See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) for more detailed instructions on how to install SRA Toolkit.\
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
-## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)\
+## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
 ```
-wget http://opengene.org/fastp/fastp
-chmod a+x ./fastp
+wget http://opengene.org/fastp/fastp # to download a file from the specified URL
+chmod a+x ./fastp # to make the downloaded file executable
 ```
   - `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
