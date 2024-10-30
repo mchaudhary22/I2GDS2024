@@ -27,7 +27,7 @@ The assemblies downloaded and used in this pipeline can be found in the `data/` 
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
 ```
-wget http://opengene.org/fastp/fastp <code style="color : darkorange">#to download a file from the specified URL</code>
+wget http://opengene.org/fastp/fastp $${\color{orange}#to download a file from the specified URL}$$
 chmod a+x ./fastp # to make the downloaded file executable
 ```
   - `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
