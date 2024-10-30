@@ -91,6 +91,10 @@ echo "Download completed."
 </details>
 <p></p>
 
+After downloading the data, unzip the file using the following command:
+
+	unzip filename.zip
+
 # 1. QUAST Analysis (Quality Assessment of Genome Assemblies)
 
 ### 1.1 Introduction
