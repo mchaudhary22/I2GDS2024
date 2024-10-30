@@ -22,30 +22,30 @@ curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curre
 See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) for more detailed instructions on how to install SRA Toolkit.\
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
+> [!NOTE]
+> The data required for the next step (Step 1) should be downloaded from NCBI SRA, or it can be found on ARC. You can copy the raw files directly from our directory using the following command:
+> ```
+> cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
+> ```
+
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 - Install **fastp** by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
   ```
   wget http://opengene.org/fastp/fastp     #to download a file from the specified URL
   chmod a+x ./fastp     #to make the downloaded file executable
   ```
-- `fastp.py`: Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
+- `fastp.py`: Python script to handle raw FASTQ data and run **fastp** for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
-    - Specify/Modify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
+    - Specify/Modify the path to locate **fastp**` and change the input and output directories in `fastp.py` before use.
   - **Input**: FASTQ files (either single-end or paired-end)
     - for single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
     - for paired-end data, specify read2 input by `-I` or `--in2`, and specify read2 output by `-O` or `--out2`.
-    - `fastp.py` in `code/` is written for single-end data, need to modify if your data is paired-end
+    - `fastp.py` in `code/` is written for single-end data, you will need to modify the code your data is paired-end.
   - **Expected output**: `_QC.fastq.gz` gzip-compressed file
   - Run the following to execute the code.
     ```
     python3 fastp.py
     ```
-    
-> [!NOTE]
-> The data required for this step should be downloaded from the previous step or can be found on ARC. You can copy the raw files directly from our directory using the following command:
-> ```
-> cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
-> ```
 
 ## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)
 - *Data availability: Data needed for this step can be found at `data/` directory*
