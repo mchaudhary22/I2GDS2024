@@ -1,5 +1,5 @@
 ## Pipeline for assembling short read sequence data
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline is located at the following path: `code/spades.sh`.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline is located at `code/` directory.
 
 ## Dependencies & Version Information
 Ensure the following dependencies are installed to run the pipeline:
@@ -20,7 +20,9 @@ Use the following command to download SRA Toolkit:
 curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-mac64.tar.gz
 ```
 See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) for more detailed instructions on how to install SRA Toolkit.\
-Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
+Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`\
+
+The assemblies downloaded and used in this pipeline can be found in the `data/` directory.
 
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
