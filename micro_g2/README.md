@@ -59,7 +59,8 @@ The code is located in the following path: `code/spades.sh`.
 
 
 
-**Note to Ying-Xian**: You will want to make sure that this code is present at the top of your script for running SPAdes in the virtual environment:
+**Notes to Ying-Xian**:
+You will want to make sure that this code is present at the top of your script for running SPAdes in the virtual environment:
 ```
     module load Anaconda3
     source activate SPAdes_v4.0.0_env
