@@ -228,7 +228,7 @@ then copy paste
 #SBATCH --mail-type=ALL
 
 source ~/.bashrc
-conda activate RNA1-seq
+conda activate RNA2-seq
 
 trimmomatic SE SRR11749400_1.fastq output_trimmed0.fastq ILLUMINACLIP:adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
 
@@ -379,7 +379,7 @@ copy and paste
 #SBATCH --mail-type=ALL
 
 source ~/.bashrc
-conda activate RNA1-seq
+conda activate RNA2-seq
 
 # make SAM files 
 hisat2 -p 8 -x geneIndex -U output_trimmed0.fastq -S 0.sam
@@ -483,7 +483,7 @@ copy and paste
 #SBATCH --mail-type=ALL
 
 source ~/.bashrc
-conda activate RNA1-seq
+conda activate RNA2-seq
 
 featureCounts -a ncbi_dataset/data/GCF_000001635.27/genomic.gtf -o 0counts.txt 0.sam
 featureCounts -a ncbi_dataset/data/GCF_000001635.27/genomic.gtf -o 1counts.txt 1.sam
@@ -501,11 +501,115 @@ sbatch counter.sh
 </details>
 
 # Visualization
+<details>
+<summary> Integrative Genomics Viewer </summary>
+
+This section is a work in progress, in the future visualization will involve the data from feature counts being used in R to generate vendiagrams of the features detected by the different sets of RNAseq collection methods. For now, this section will use the Integrative Genomics Viewer (IGV) to align the BAM files to a reference genome.
+<details>
+<summary> Making BAM files </summary>
+
+At this stage, you should have SAM files for each set of RNAseq data you start with.  To make SAM files into BAM files you will need SAMtools, this is listed as a soft requirement for this pipeline but will be a hard requirement if you want to do this step. It can be installed via conda like all the other programs.
+```
+# have conda running
+conda activate RNA2-seq
+conda install -c bioconda samtools -y
+```
+
+Once installed the commands you will need are 
+
+```
+# creates output.bam from input.sam
+samtools view -bS input.sam > output.bam
+```
+```
+#sorts output.bam
+samtools sort output.bam -o output_sorted.bam
+```
+```
+#makes an indec file called output_sorted.bam.bai
+samtools index output_sorted.bam
+```
+If you have been following the exact protocol up to this point your SAM files are named 0.sam - 4.sam and you can submit all 3 of the above steps as a single slurm job by doing the following
+
+run 
+```
+nano BAMer.sh
+```
+copy and paste 
+```
+#!/bin/bash
+
+#SBATCH -t 144:00:00
+
+#SBATCH --nodes=1
+
+#SBATCH --tasks-per-node=8
+
+#SBATCH --job-name=BAMMER
+
+#SBATCH --partition=normal_q
+
+#SBATCH --account=introtogds
+
+#SBATCH --mail-user=email
+
+#SBATCH --mail-type=ALL
+
+
+
+# Load environment and activate RNA2-seq
+source ~/.bashrc
+
+conda activate RNA2-seq
+
+samtools view -bS 0.sam > 0.bam
+samtools view -bS 1.sam > 1.bam
+samtools view -bS 2.sam > 2.bam
+samtools view -bS 3.sam > 3.bam
+samtools view -bS 4.sam > 4.bam
+
+samtools sort 0.bam -o 0_sorted.bam
+samtools sort 1.bam -o 1_sorted.bam
+samtools sort 2.bam -o 2_sorted.bam
+samtools sort 3.bam -o 3_sorted.bam
+samtools sort 4.bam -o 4_sorted.bam
+
+samtools index 0_sorted.bam
+samtools index 1_sorted.bam
+samtools index 2_sorted.bam
+samtools index 3_sorted.bam
+samtools index 4_sorted.bam
+```
+save by typing Ctrl x, y, enter
+
+run
+```
+sbatch BAMer.sh
+```
+
+Now (once this has run) you have 0_sorted.bam - 4_sorted.bam and 0_sorted.bam.bai - 4_sorted.bam.bai wich will be used in IGV
+</details>
+
+<details>
+<summary> Using IGV </summary>
+
+Integrative Genomics Viewer (IGV) can be used as a web application however due to the large size of BAM files it is suggested that you install it on your local computer for best results. IGV can be obtained for free under an open-source MIT license (my favorite kind of license) at https://igv.org/ 
+
+This means you will also need the .bam and .bam.bai files on your local computer please download them if you have been working on ARC up to this point, I recommend opening a Linux terminal on your computer and using `scp name@server:/path/to/file/sorted.bam /path/to/local/download_folder` consider using \*sorted.ba\* as a way to indicate all you sorted.bam and sorted.bam.bai at the same time to download all of them at once if you have followed the naming convention laid out above
+
+Once IGV, the BAM, and BAI files are all on your computer open IGV, and in the top left you can find the genome you want to compare your RNAseq data to, if you are following along with the data used in the original project mouse (GRCm39/mm39) is the same genome you downloaded from NCBI earlier so you can use this one. If not you can select from the supplied genomes or upload your own.
+
+From here you can go to the top left again (above the genome) and select file > load from file > your sorted.bam. If you have the sorted.bam and sorted.bam.bai named the same (except the .bai extension) then this should load quickly you can now select the chromosome you want to study (top drop-down next to the genome) and display splice-aware alignments of your RNAseq data against the target genome, some examples are as follows.
+
+</details>
+
+</details>
+ 
 # Referances 
 
 
 <details>
-<summary> Referances </summary>
+<summary> References </summary>
 1. Huang, N. et al. Natural display of nuclear-encoded RNA on the cell surface and its impact on cell interaction. Genome biology 21, 1–23 (2020).
 
 
