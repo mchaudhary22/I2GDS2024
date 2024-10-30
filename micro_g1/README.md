@@ -1,7 +1,7 @@
-## Introduction to Microbiome Pipeline Tools
+# Introduction to Microbiome Pipeline Tools
 This pipeline employs three key tools — QUAST, Prodigal, and MMSeq2 — for evaluating genome assembly quality, predicting gene sequences, and clustering gene families. These steps are essential in genome/microbiome studies, especially for accurate assembly assessment, gene identification, and comparative analysis across genomes.
 
-## Dependencies & Version Information
+# Dependencies & Version Information
 Ensure the following dependencies are installed to run the pipeline:
 
 - **QUAST**: v5.0.2
@@ -9,7 +9,7 @@ Ensure the following dependencies are installed to run the pipeline:
 - **MMSeqs2**: 13.45111
 - **Additional Python Packages**: biopython 1.84, numpy 1.26.4, pandas 2.2.2, xlrd 2.0.1, openpyxl 3.1.5
 
-## Environment Setup
+# Environment Setup
 Load Anaconda3 on ARC to create a conda environment and activate it before running each tool:
 
     module load Anaconda3
@@ -18,10 +18,15 @@ Load Anaconda3 on ARC to create a conda environment and activate it before runni
 
 After creating and activating the environment, install each tool using conda.
 
-## Data download
+# Data download
 
-To download genomic data, install the **NCBI CLI tool** using Conda
+Install the **NCBI CLI tool** using Conda
 
+```
+conda install -c conda-forge ncbi-datasets-cli
+```
+
+Download genomic data by **NCBI CLI tool**
 ```
 datasets download genome accession GCA_041080895.1 --output-dir/path/to/save
 ```
@@ -84,13 +89,14 @@ echo "Download completed."
 ```
 
 </details>
+<p></p>
 
-## 1. QUAST Analysis (Quality Assessment of Genome Assemblies)
+# 1. QUAST Analysis (Quality Assessment of Genome Assemblies)
 
 ### 1.1 Introduction
 [QUAST](https://bioinf.spbau.ru/quast) assesses the quality of genome assemblies by analyzing contigs for metrics like N50, L50, and total contig length. This provides insights into the completeness and accuracy of microbial genome assemblies, a key step before further analysis.
 
-### 1.2 Installation
+## 1.2 Installation
 To install QUAST on ARC:
 
     conda install -c bioconda quast
@@ -99,7 +105,7 @@ After installation, user can verify the version:
 
     quast --version
 
-### 1.3 Running QUAST
+## 1.3 Running QUAST
 QUAST accepts assembly files and outputs detailed reports on genome quality:
 
     quast /path/to /downloaded_assembled_data/*.fna -o quast_output
@@ -150,7 +156,7 @@ echo "QUAST analysis completed for all GCA files."
 ```
 </details>
 
-### 1.4 Accumulate all the reports of the QUAST results to a single directory using a bash script
+## 1.4 Accumulate all the reports of the QUAST results to a single directory using a bash script
 
 Refer this bash script for accumulation of .txt files from QUAST output in separate folder 
 "02b_quastAccumulation.sh"
@@ -197,11 +203,11 @@ echo "All report.txt files accumulated in $REPORTS_DIR."
 
 </details>
 
-### 1.5 Input Requirements
+## 1.5 Input Requirements
 - **Input Format**: FASTA files of genome assemblies, with a minimum contig length threshold specified to filter out short contigs.
 - **Input Location**: Store assembly files in a dedicated directory, such as assembly_data/
 
-### 1.6 Output Explanation
+## 1.6 Output Explanation
 - Reports:
     - N50 and L50: Metrics for assembly contiguity.
     - Total Contig Length: The total length of all contigs.
@@ -214,13 +220,13 @@ echo "All report.txt files accumulated in $REPORTS_DIR."
 
 For more information, visit the [QUAST GitHub page](https://github.com/ablab/quast).
 
-## 2. Prodigal Analysis (Gene Prediction and Annotation)
+# 2. Prodigal Analysis (Gene Prediction and Annotation)
 
-### 2.1 Introduction
+## 2.1 Introduction
 
 PRODIGAL predicts protein-coding genes within prokaryotic genomes, identifying open reading frames and translating initiation sites. This is critical for annotating microbial genomes and inferring gene functions.
 
-### 2.2 Installation
+## 2.2 Installation
 To install Prodigal on ARC:
 
     conda install -c bioconda prodigal
@@ -229,7 +235,7 @@ Verify installation with:
 
     prodigal -v
 
-### 2.3 Running Prodigal
+## 2.3 Running Prodigal
 Run Prodigal on each genome assembly to predict genes:
 
     prodigal -i genome.fasta -a genes.faa -d genes.ffn -o output.gbk -s scores.txt
@@ -288,11 +294,11 @@ done
 ```
 </details>
 
-### 2.4 Input Requirements
+## 2.4 Input Requirements
 - Input Format: Genomic FASTA files from which genes are to be predicted.
 - Input Location: Place all input genomes in a directory, e.g., genome_data/.
 
-### 2.5 Output Explanation
+## 2.5 Output Explanation
 - Output Files:
     - .gbk file: Contains gene prediction results in GenBank format.
     - .faa file: FASTA file of predicted protein sequences.
@@ -303,12 +309,12 @@ done
 
 For more details, refer to the [Prodigal GitHub page](https://github.com/hyattpd/Prodigal).
 
-## 3. MMSeq2 Analysis (Clustering of Protein Sequences)
+# 3. MMSeq2 Analysis (Clustering of Protein Sequences)
 
-### 3.1 Introduction
+## 3.1 Introduction
 MMSeqs2 performs many-against-many sequence comparisons and clusters sequences based on similarity. This tool is used to create clusters of homologous gene families across genomes, essential for microbial comparative studies.
 
-### 3.2 Installation
+## 3.2 Installation
 To install MMSeqs2 on ARC:
 
     conda install -c bioconda mmseqs2
@@ -317,15 +323,10 @@ Verify installation:
 
     mmseqs --version
 
-### 3.3 Running MMSeq2
-#### 3.3.1 Prepare Input Data
+## 3.3 Running MMSeq2
+### 3.3.1 Prepare Input Data
 You have accumulated all the .faa files from Prodigal analysis under /results/03_prodigal/all_faa_files. These files contain the predicted protein sequences and will be the input for MMseqs2.
 - Ensure that your .faa files are in the correct format and named appropriately for each genome. Refer this bash script for accumulation of all .faa files “03b_faaAccumulation.sh”
-
-Modify the header of the FASTA files to shorten them and change the ID to just the sequence of the genome. For example, a previous header
-
-"CP074663.1_1 # 1 # 1401 # 1 # ID=1_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.525" will now become "GCA_001756025_CP074663.1_1"
-- The first 13 characters of this ID signify the genome name and remaining identify the gene ID. Use the following code to change the header document “03c_clean_faa_files.py”
 
 <details>
     <summary>03b_faaAccumulation.sh</summary>
@@ -357,6 +358,59 @@ echo "All .faa files have been moved to $FAA_DIR."
 ```
 </details>
 
+<p></p>
+Modify the header of the FASTA files to shorten them and change the ID to just the sequence of the genome. For example, a previous header
+
+"CP074663.1_1 # 1 # 1401 # 1 # ID=1_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.525" will now become "GCA_001756025_CP074663.1_1"
+- The first 13 characters of this ID signify the genome name and remaining identify the gene ID. Use the following code to change the header document “03c_clean_faa_files.py”
+
+<details>
+    <summary>03c_clean_faa_files.py</summary>
+
+```
+#!/usr/bin/env python
+
+"""
+Description: Clean and rename sequence IDs in .faa files, appending the filename as a prefix to each sequence ID.
+Input directory: results/03_prodigal/all_faa_files/
+Output directory: results/03_prodigal/cleaned_faa_files/
+Author: Manisha Chaudhary
+Date: 10/24/2024
+"""
+
+import glob
+import os
+from Bio import SeqIO
+
+# Define input and output directories
+input_dir = "results/03_prodigal/all_faa_files/"
+output_dir = "results/03_prodigal/cleaned_faa_files/"
+
+# Ensure the output directory exists
+os.makedirs(output_dir, exist_ok=True)
+
+# Process each .faa file in the input directory
+for fname in glob.glob(input_dir + "*.faa"):
+    # Extract the base name of the file without the extension for use in the sequence ID
+    base_name = os.path.basename(fname)[:-4]
+
+    # Open the output file for writing the cleaned sequences
+    with open(os.path.join(output_dir, base_name + "_clean.faa"), "w") as output_handle:
+        # Parse each sequence in the .faa file
+        for seq_record in SeqIO.parse(fname, "fasta"):
+            # Modify the sequence ID: append filename prefix to original ID
+            seq_record.id = base_name + "_" + seq_record.id.split()[0]
+            seq_record.description = ""  # Remove additional description
+
+            # Write the modified sequence to the new file
+            SeqIO.write(seq_record, output_handle, "fasta")
+
+    print(f"Completed cleaning {fname}")
+
+print("All .faa files cleaned and saved to the output directory.")
+```
+
+</details>
 
 #### 3.3.2 Create a Database with MMseqs2
 MMseqs2 requires the creation of a sequence database. Use the following command to create the database from your .faa files:
@@ -365,7 +419,7 @@ MMseqs2 requires the creation of a sequence database. Use the following command 
 
 - This command will create a database from all the .faa files.
 
-#### 3.3.3 Perform Sequence Clustering with MMseqs2
+### 3.3.3 Perform Sequence Clustering with MMseqs2
 Now, perform sequence clustering to identify homologous gene families across genomes. Run the following command:
 
     mmseqs cluster /results/mmseqs2_db /results/mmseqs2_cluster /results/tmp --min-seq-id 0.5 -c 0.8
@@ -373,7 +427,7 @@ Now, perform sequence clustering to identify homologous gene families across gen
 - --min-seq-id 0.5: Sets a minimum sequence identity threshold of 50% for clustering.
 - -c 0.8: Sets a coverage threshold, ensuring that 80% of the sequence is aligned.
 
-#### 3.3.4 Extract Cluster Information
+### 3.3.4 Extract Cluster Information
 Once clustering is complete, extract the cluster information to analyze gene families:
 
 ```
@@ -441,7 +495,7 @@ echo "MMseqs2 clustering complete. TSV file created at: $TSV_OUTPUT"
 
  </details>   
 
-#### 3.3.5 Generate Presence-Absence Matrix
+### 3.3.5 Generate Presence-Absence Matrix
 Now that you have the cluster information, you can compute the genome-gene family presence-absence matrix. This step can be done by parsing the output TSV file and counting the presence of gene families across the genomes.
 
 You can write a Python script to generate this matrix from the mmseqs2_cluster.tsv file. The script will:
@@ -531,11 +585,11 @@ ws.to_csv("results/04_mmseq/mmseqsFinalMatrix.csv", index=False, header=True)
 
 </details>
 
-
+<p></p>
 **GitHub Link**
 
 For further reference, see the [MMSeq2 GitHub page](https://github.com/soedinglab/MMseqs2).
 
-## Other information
+# Other information
 For your reference, the steps outlined above correspond to specific sections of the overall workflow.
 ![common_pipeline](images/CommonPipeline.jpg)
