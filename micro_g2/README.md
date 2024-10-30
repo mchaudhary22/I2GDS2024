@@ -40,11 +40,11 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
     python3 fastp.py
     ```
-> [!NOTE]
-> The data required for Step 1 should be downloaded from NCBI SRA, or it can be found on ARC. You can copy the raw files directly from our directory using the following command:
-> ```
-> cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
-> ```
+ > [!NOTE]
+ > The data required for Step 1 should be downloaded from NCBI SRA, or it can be found on ARC. You can copy the raw files directly from our directory using the following command:
+ > ```
+ > cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
+ > ```
 
 ## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)
 - *Data availability: Data needed for this step can be found at `data/` directory*
