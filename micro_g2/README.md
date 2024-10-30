@@ -74,4 +74,4 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
 *P/S: We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2741544.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.*    
 
-## Step 3: To assesses the quality of genome assemblies using [CheckM](https://genome.cshlp.org/content/25/7/1043)
+## Step 3: To assesses the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
