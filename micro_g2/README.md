@@ -1,3 +1,5 @@
+$${\color{red}Welcome \space \color{lightblue}To \space \color{orange}Stackoverflow}$$
+
 ## Pipeline for assembling short read sequence data
 This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline is located at `code/` directory.
 
