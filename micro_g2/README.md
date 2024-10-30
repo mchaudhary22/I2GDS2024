@@ -26,10 +26,10 @@ The assemblies downloaded and used in this pipeline can be found in the `data/` 
 
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 - Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
-```
-wget http://opengene.org/fastp/fastp     #to download a file from the specified URL
-chmod a+x ./fastp     #to make the downloaded file executable
-```
+  ```
+  wget http://opengene.org/fastp/fastp     #to download a file from the specified URL
+  chmod a+x ./fastp     #to make the downloaded file executable
+  ```
 - `fastp.py`: Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
     - Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
@@ -43,7 +43,7 @@ chmod a+x ./fastp     #to make the downloaded file executable
     python3 fastp.py
     ```
 
-## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)\
+## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)
 - Install `spades` by following the instructions at the [GitHub](https://github.com/ablab/spades). An alternative method that was used in this tutorial was installing SPAdes into a Anaconda virtual environment using the following code:
     ```
     module load Anaconda3
