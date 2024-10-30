@@ -196,7 +196,7 @@ mkdir /path/to/genomeindex
 
 STAR --runThreadN 6 \
 --runMode genomeGenerate \
---genomeDir genomeindex. \
+--genomeDir genomeindex \
 --genomeFastaFiles arabidopsisgenome.fa \
 --sjdbGTFfile arabidopsisgenome.gtf
 
@@ -235,8 +235,8 @@ STAR --runThreadN 6 \
 #and output as a BAM which is sorted (--outSAMtype)
 
 path/to/STAR-2.7.11b/source/STAR --runThreadN 6 \
---genomeDir genomeindex/ \
---readFilesIn D0C1_1.fq.gz D0C1_2.fq.gz \ 
+--genomeDir genomeindex \
+--readFilesIn D0C1_1.trim.fq.gz D0C1_2.trim.fq.gz \ 
 --readFilesCommand zcat \
 --outSAMtype BAM SortedByCoordinate
 
