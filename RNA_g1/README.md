@@ -6,29 +6,30 @@
 ## Introduction
 
 This page is a work in progress!
-This repo explains a basic pipeline for RNA-Seq analysis. It was developed as part of curriculum for Virginia Tech's Intro to Genomic Data Science course. This pipeline runs in Linux and relies on [FASTQC](https://github.com/s-andrews/FastQC), [Trimmomatic](https://github.com/timflutre/trimmomatic), [STAR](https://github.com/alexdobin/STAR), and [Featurecounts](https://subread.sourceforge.net/featureCounts.html). This example pipeline uses single-end FastQ reads, but it could be altered for use with paired end data (see [example slurm scripts](#slurm-job-examples)).
 
-Throughout the code snippets in this repo we have attempted to make things as clear as possible. However, some paths may need to be changed depending on your method of installation or location of your files. These areas where changes are required before running will be noted with three asterisks (***) 
+This repo explains a basic pipeline for RNA-Seq analysis in a linux HPC environment. It was developed as part of curriculum for Virginia Tech's Intro to Genomic Data Science course. This pipeline runs in Linux and relies on [FASTQC](https://github.com/s-andrews/FastQC), [Trimmomatic](https://github.com/timflutre/trimmomatic), [STAR](https://github.com/alexdobin/STAR), and [Featurecounts](https://subread.sourceforge.net/featureCounts.html). This example pipeline uses paired-end FastQ reads, but it could be altered for use with paired end data (see below). Throughout the code snippets in this repo we have attempted to make things as clear as possible. However, some paths may need to be changed depending on your method of installation or location of your files so be sure to be mindful of locations of your software and to read the code snippets carefully. 
 
 Contact: Jaret Arnold (amichael19@vt.edu) or Lili Zebluim (liliz@vt.edu)
 
 To do (before finalized):
 - [x] Upload new pipeline image 
 - [ ] Test All Code Blocks
-- [ ] Fix i dont know image
-- [ ] Add info on downloading the file
+- [ ] Fix i dont understand image
+- [x] Add info on downloading the file
 - [ ] Read through/edit blurbs and code snippets
 - [x] Add References 
 
 ## Downloading Test files
-CHANGE THIS TO MY EXAMPLE FILES
 To download the files used in this test workflow, run the following commands in your linux environment. 
 ```bash
-wget 'https://drive.usercontent.google.com/download?id=10lMnWkwufamCqlRiHaN_8gL3u9UmK90f&export=download&authuser=1&confirm=t' -O D0C1_1.fq.gz  #This is the forward read
-wget 'https://drive.usercontent.google.com/download?id=1mWzTnFHuSoB43Ma0cfOSMmrK0-DARubV&export=download&authuser=1&confirm=t' -O D0C1_2.fq.gz  #This is the reverse read
-wget 'https://drive.usercontent.google.com/download?id=160nLEzOYqO-fQ8_Pgbe5k0QuGeRZ3s-Z&export=download&authuser=1&confirm=t' -O arabidopsisgenome.gtf #This is the (arabidopsis) gtf file, used in aligning
-wget 'https://drive.usercontent.google.com/download?id=1ZoM6vfRoSWphNLPwxcnT1fsXLFdbFprd&export=download&authuser=1&confirm=t' -O arabidopsisgenome.fa #This is the (arabidopsis) genomic fasta file
-
+#This is the forward read
+wget 'https://drive.usercontent.google.com/download?id=10lMnWkwufamCqlRiHaN_8gL3u9UmK90f&export=download&authuser=1&confirm=t' -O D0C1_1.fq.gz
+#This is the reverse read
+wget 'https://drive.usercontent.google.com/download?id=1mWzTnFHuSoB43Ma0cfOSMmrK0-DARubV&export=download&authuser=1&confirm=t' -O D0C1_2.fq.gz
+#This is the (arabidopsis) gtf file, used in aligning
+wget 'https://drive.usercontent.google.com/download?id=160nLEzOYqO-fQ8_Pgbe5k0QuGeRZ3s-Z&export=download&authuser=1&confirm=t' -O arabidopsisgenome.gtf
+#This is the (arabidopsis) genomic fasta file, used in indexing
+wget 'https://drive.usercontent.google.com/download?id=1ZoM6vfRoSWphNLPwxcnT1fsXLFdbFprd&export=download&authuser=1&confirm=t' -O arabidopsisgenome.fa 
 ```
 
 ## FastQC
@@ -36,10 +37,12 @@ FastQC will be used to assess the quality of the raw reads and generate an html 
 
 #### Installation via module load:
 ```bash
+#load the fastqc module
 module load FastQC
-fastqc --version #testing if install worked
-#TESTED
+#test if install worked
+fastqc --version
 
+#TESTED
 ```
 
 <details>
@@ -49,11 +52,16 @@ fastqc --version #testing if install worked
 </summary>
   
 ```bash
+#download fastqc files
 wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.12.1.zip
+#unzip the file
 unzip fastqc_v0.12.1
+#add fastqc to your path (if this doesn't work try running using the full path)
 export PATH:$PATH/to/fastqc
+#refresh your paths in bashrc
 source ~/.bashrc
-fastqc --version #testing if install worked
+#test if fastqc is working
+fastqc --version
 
 #UNTESTED
 ```
@@ -62,21 +70,24 @@ fastqc --version #testing if install worked
 #### Running FastQC:
 
 ```bash
-#cd /path/to/reads    #move to location of reads (if neccesary) 
+#move to location of reads (if neccesary)
+#cd /path/to/reads   
+#run fastqc on any files ending in .fq.gz and outputs in current file (-o)
 fastqc *.fq.gz -o .
-#runs fastqc on any files ending in .fq.gz and outputs in current file (-o)
 
 #TESTED
 ```
 
 ## Trimmomatic
-Trimmomatic is used to remove adapter sequence contamination and low quality reads. Use your fastqc report to inform you how to best trim your reads. In the case of the demo file, trimming bases at the end will improve the quality of our reads so we will use the TRAILING option. If trimmomatic is available on your computing environment, installation may be as easy as invoking module load. If not, try installing via the download. 
+Trimmomatic is used to remove adapter sequence contamination and low quality reads. Use your fastqc report to inform you how to best trim your reads. In the case of the demo file, trimming bases at the front (head) will improve the quality of our reads so we will use the HEADCROP option. If trimmomatic is available on your computing environment, installation may be as easy as invoking module load. If not, try installing via the download. Keep in mind larger files (as those in the example) can take some time to be trimmed, so consider batching your job using slurm/sbatch.
 <need to doublecheck the installation code>
-  
+
 #### Installation via module load:
 ```bash
+#load trimmomatic module
 module load Trimmomatic
-java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar  #test if installation worked
+#test trimmomatic 
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar
 
 #TESTED
 ```
@@ -88,8 +99,11 @@ java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar  #test if installation worked
 </summary>
 
 ```bash
+#download trimmomatic files
 wget https://github.com/usadellab/Trimmomatic/files/5854859/Trimmomatic-0.39.zip
+#unzip the file
 unzip Trimmomatic-0.39.zip
+#test trimmomatic
 java -jar /path/to/Trimmomatic-0.39/trimmomatic-0.39.jar 
 
 #TESTED
@@ -99,6 +113,13 @@ java -jar /path/to/Trimmomatic-0.39/trimmomatic-0.39.jar
 
 #### Trimming paired-end reads:
 ```bash
+
+#run trimmomatic on paired end (PE) data and output a log file of trims (-trimlog)
+#firstly providing the forward read and the reverse read (D0C1_1.fq.gz D0C1_2.fq.gz),
+#and then the names of the paired (D0C1_1.trim.fq.gz) and unpaired (D0C1_1un.trim.fq.gz) trimmed reads
+#and the names for the paired/unpaired trimmed reads for the reverse read
+#clipping the TruSeq3-PE adaptor (ILLUMINACLIP), the head of the read (HEADCROP)
+#and dropping any reads which aren't minimum length 30 (MINLEN)
 
 java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
 -trimlog trimlog.txt \
@@ -148,15 +169,18 @@ fastqc *.trim.fq.gz -o .
 ```
 
 ## STAR
-STAR is the program used to index and align reads to a reference genome. It is always advisable to schedule STAR and other alignment processes on ARC as they can often require large memory and time requirements, particularly with more reads (see [example slurm scripts](#slurm-job-examples)).
+STAR is the program used to index and align reads to a reference genome. It is advisable to schedule STAR and other alignment processes on ARC as they can often require large memory and time requirements, particularly with more reads (see [example slurm scripts](#slurm-job-examples)). For instance, in our trials the test readmapping took ~50 min using 64GB of memory and 6 threads.
 <need to check installation instructions>
 
 #### Installation via download:
 ```bash
+#download STAR
 wget https://github.com/alexdobin/STAR/archive/2.7.11b.tar.gz
+#untar the files
 tar -xzf 2.7.11b.tar.gz
-cd STAR-2.7.11b
-cd STAR/source
+#move into the source files
+cd STAR-2.7.11b/source
+#compile STAR
 make STAR
 
 #TESTED
@@ -164,13 +188,17 @@ make STAR
 
 #### Genome indexing:
 ```bash
+#create a dictory for the output genome index
 mkdir /path/to/genomeindex
+
+#Run STAR with 6 Threads (--runThreadN) using the test genomic fasta (--genomeFastaFiles) and gtf file (--sjdbGTFfile)
+#to output in the folder previously created
 
 STAR --runThreadN 6 \
 --runMode genomeGenerate \
---genomeDir /path/to/genomeindex \
---genomeFastaFiles /path/to/genomicfasta \
---sjdbGTFfile /path/to/genomeGTF
+--genomeDir genomeindex. \
+--genomeFastaFiles arabidopsisgenome.fa \
+--sjdbGTFfile arabidopsisgenome.gtf
 
 #TESTED
 ```
@@ -190,22 +218,30 @@ STAR --runThreadN 6 \
 #SBATCH --cpus-per-task=6
 #SBATCH --mem=64G
 #SBATCH --ntasks=1             
-#SBATCH -A <allocation> #Don't forget to put in your allocation ***
+#SBATCH -A <allocation> 
 #SBATCH --time=48:00:00
 #SBATCH -p normal_q
 #SBATCH --output=STARslurmlogtest.out
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=<user> #Don't forget your email username ***
+#SBATCH --mail-user=<user>
+
+#Don't forget to put in your allocation and username!!
+
+#run STAR using the full path (e.g. home/amichael19/software/STAR-2.7.11b/source/STAR) with
+#set thread number (--runThreadN),
+#the location of the previously created genome index (--genomeDir),
+#read your RNA-Seq files in (--readFilesIn) first with the forward reads separated by a space,
+#using compressed gzip files (readFilesCommand),
+#and output as a BAM which is sorted (--outSAMtype)
+
+path/to/STAR-2.7.11b/source/STAR --runThreadN 6 \
+--genomeDir genomeindex/ \
+--readFilesIn D0C1_1.fq.gz D0C1_2.fq.gz \ 
+--readFilesCommand zcat \
+--outSAMtype BAM SortedByCoordinate
 
 
-/path/to/STAR-2.7.11b/source/STAR --runThreadN 6 \ #run STAR by providing your full path to the .exe and set the threads
---genomeDir /path/to/genomeindex/ \ #location of genome index previously created ***
---readFilesIn /path/to/D0C1_1.fq.gz /path/to/D0C1_2.fq.gz \ #path to forward reads separated by a space and the path to the reverse reads ***
---readFilesCommand zcat \ #to read files that are gzip compressed
---outSAMtype BAM SortedByCoordinate #output as BAM which is sorted by coord
-
-
-#UNTESTED
+#TESTED
 ```
 <details>
 <summary> Output file descriptions </summary>
@@ -214,24 +250,31 @@ STAR --runThreadN 6 \
 
 
 ## FeatureCounts
-Feature counts is used to produce a matrix of genes and the count of their transcripts. 
+Feature counts is used to produce a matrix of genes and the count of their transcripts and it is contained within the subread package. Installation is easiest via conda (e.g. Miniconda3). 
 <need to check installation instructions>
 
 #### Installation via conda:
 ```bash
+#load Miniconda3 to create an environment for Featurecounts
 module load Miniconda3
+#Create environment named subread (-n) on bioconda channel (-c) using the subread package 
 conda create -n subread -c bioconda subread
+#ARC current version to activate the previously created environment
 source activate subread
-featureCounts #testing if install worked
+#test if featurecounts work by invoking it
+featureCounts
 
-#UNTESTED
+
+#TESTED
 ```
 
 #### Running Feature counts:
 ```bash
-featureCounts -a <annotation file> -o <path/to/outputfile.txt> <path/to/.bam>
 
-#UNTESTED
+#run featurecounts on paired end (p) data with an (-a) annotation file (.gtf/gff) using the previously created .bam (Aligned.sortedByCoord.out.bam) and output (-o) as a file named testcount.txt
+featureCounts -p -a arabidopsisgenome.gtf -o testcount.txt Aligned.sortedByCoord.out.bam
+
+#TESTED
 ```
 
 
