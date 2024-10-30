@@ -13,8 +13,8 @@
 #SBATCH --mail-type=FAIL #include to get emailed if job fails
 
 # Define paths
-data_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/" #need to be modified
-output_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/" #need to be modified
+data_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/" #need to be modified accordingly
+output_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/" #need to be modified accordingly
 spades_path="/projects/leaph/.pyenv/versions/mambaforge/bin/spades.py"  # Updated path to spades.py
 min_length=500  # Minimum length for contigs - modify accordingly
 min_coverage=2.0  # Minimum coverage for contigs - modify accordingly
