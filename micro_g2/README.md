@@ -1,5 +1,5 @@
 ## Pipeline for assembling short read sequence data
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2.
 
 ## Dependencies & Version Information
 Ensure the following dependencies are installed to run the pipeline:
@@ -22,12 +22,12 @@ curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curre
 See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) for more detailed instructions on how to install SRA Toolkit.\
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
-## Step 1: To perform adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
-The code is located in the following path: `code/`.
+## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
+The code is located in the following path: `code/fastp.py`.
 - `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
-  - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run QC.
-  - Need to specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
-  - Need to download `fastp` at the [GitHub](https://github.com/OpenGene/fastp)
+  - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
+  - Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
+  - Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
     
     ```
     wget http://opengene.org/fastp/fastp
@@ -43,4 +43,24 @@ The code is located in the following path: `code/`.
     ```
     python3 fastp.py
     ```
-## Step 2: To perform assembly using [SPAdes](https://doi.org/10.1089/cmb.2012.0021)
+## Step 2: Assembly using [SPAdes](https://doi.org/10.1089/cmb.2012.0021)
+The code is located in the following path: `code/spades.sh`.
+- `spades.sh` : Linux bash script to assemble quality-filtered and trimmed reads into contigs.
+  - **note to Ying-Xian to edit this line** This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run QC.
+  - **note to Ying-Xian to edit this line** Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
+  - Install `spades` by following the instructions at the [GitHub](https://github.com/ablab/spades). An alternative method that was used in this tutorial was installing SPAdes into a Anaconda virtual environment using the following code:
+    ```
+    module load Anaconda3
+    conda create --name SPAdes_v4.0.0_env
+    source activate SPAdes_v4.0.0_env
+    conda install bioconda::spades
+    ```
+  - SPAdes v4.0.0 was used in this tutorial. To ensure the same version rather than the most recent version of SPAdes is installed, specify `conda install bioconda::spades=4.0.0`.
+
+
+
+**Note to Ying-Xian**: You will want to make sure that this code is present at the top of your script for running SPAdes in the virtual environment:
+```
+    module load Anaconda3
+    source activate SPAdes_v4.0.0_env
+    ```
