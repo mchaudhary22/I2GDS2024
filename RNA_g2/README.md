@@ -172,6 +172,7 @@ run with
 ```
 sbatch srrdw.sh
 ```
+This has triggered fastq-dump (via sra-tools) to download the SRR data as fastq files which you can use further in the pipeline, the names will be formatted SRR(NUMBER)_1.fastq if you followed these directions exactly.
 </details>
 
 # Trimmomatic
@@ -207,7 +208,7 @@ Each argument has a meaning and a role
 * SLIDINGWINDOW:<window_size>:<required_quality> Uses a sliding window to trim where the average quality drops below <required_quality>
 * MINLEN:<min_length>: Discards reads shorter than <min_length> bases
 
-So the command to trim the first srr file we downloaded in fastq format is
+So the command to trim the first SRR file we downloaded in fastq format is
 
 ```trimmomatic SE SRR11749400_1.fastq output_trimmed.fastq ILLUMINACLIP:adapters.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36```
 
@@ -218,7 +219,7 @@ with any adjustments made to the quality as needed
 <details>
 <summary> Trimmomatic as an sbatch </summary>
 
-or to submit the entire process as a slurm job 
+or to submit the entire process as a slurm job if you are replicating the entier pipeline on the VT ARC server
 ``` nano trimmer.sh```
 
 then copy paste
