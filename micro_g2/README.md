@@ -40,14 +40,13 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
     python3 fastp.py
     ```
- > [!NOTE]
- > The data required for Step 1 should be downloaded from NCBI SRA, or it can be found on ARC. You can copy the raw files directly from our directory using the following command:
- > ```
- > cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
- > ```
+> [!NOTE]
+> The data required for Step 1 should be downloaded from NCBI SRA, or it can be found on ARC. You can copy the raw files directly from our directory using the following command:
+> ```
+> cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
+> ```
 
 ## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)
-- *Data availability: Data needed for this step can be found at `data/` directory*
 - Install **SPAdes** by following the instructions at the [GitHub](https://github.com/ablab/spades). An alternative method that was used in this tutorial was installing **SPAdes** into a Anaconda virtual environment using the following code:
   ```
   module load Anaconda3     #to load the Anaconda3 module
@@ -73,6 +72,10 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
     sbatch spades.sh
     ```
-*P/S: We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2741544.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.*    
+> [!NOTE]
+> The data required for Step 2 can be found in `data/` directory on this GitHub. You can copy the raw files directly from our directory using the following command:
+
+> [!NOTE]
+> We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2741544.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.   
 
 ## Step 3: To assesses the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
