@@ -23,12 +23,6 @@ See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) fo
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
-> [!NOTE]
-> The data required for this step should be downloaded from the previous step or can be found on ARC. You can copy the raw files directly from our directory using the following command:
-> ```
-> cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
-> ```
-
 - Install **fastp** by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
   ```
   wget http://opengene.org/fastp/fastp     #to download a file from the specified URL
@@ -46,6 +40,12 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
     python3 fastp.py
     ```
+    
+> [!NOTE]
+> The data required for this step should be downloaded from the previous step or can be found on ARC. You can copy the raw files directly from our directory using the following command:
+> ```
+> cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
+> ```
 
 ## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)
 - *Data availability: Data needed for this step can be found at `data/` directory*
