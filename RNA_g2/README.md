@@ -260,7 +260,7 @@ install data sets to obtain data from NCBI
 ```
 curl -o datasets 'https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets'
 ```
-give data sets exacting privileges 
+give data sets executing privileges  
 ```
 chmod +x datasets
 ```
