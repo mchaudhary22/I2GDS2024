@@ -43,3 +43,4 @@ The code is located in the following path: `code/`.
     ```
     python3 fastp.py
     ```
+## Step 2: To perform assembly using [SPAdes](https://doi.org/10.1089/cmb.2012.0021)
