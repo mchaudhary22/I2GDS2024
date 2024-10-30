@@ -601,6 +601,9 @@ Once IGV, the BAM, and BAI files are all on your computer open IGV, and in the t
 
 From here you can go to the top left again (above the genome) and select file > load from file > your sorted.bam. If you have the sorted.bam and sorted.bam.bai named the same (except the .bai extension) then this should load quickly you can now select the chromosome you want to study (top drop-down next to the genome) and display splice-aware alignments of your RNAseq data against the target genome, some examples are as follows.
 
+![IGV_General](https://github.com/Matt-G301/images/blob/main/IGV_deails.png)
+![IGV_Compare](https://github.com/Matt-G301/images/blob/main/IGV_4files.png)
+
 </details>
 
 </details>
