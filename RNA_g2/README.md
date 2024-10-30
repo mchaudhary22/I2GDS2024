@@ -4,7 +4,7 @@ Contact: Matt Gilfus (marrett@vt.edu) and Abigayle Pollock (abigaylep@vt.edu)
 This repo was created through the Introduction to Genomic Data Science Class at Virginia Tech. For another RNAseq pipeline example, see RNA_g1!
 
 # Using this guide
-Each step in the RNAseq pipeline RNA2seq is laid out here step by step. Example data used for this project can be found at: **Insert link to paper here**
+Each step in the RNAseq pipeline RNA2seq is laid out here step by step. Example data used for this project can be found at:(https://link.springer.com/article/10.1186/s13059-020-02145-6)
 
 Please read each step in its entirety before testing any of the code. There is sample code included in the explanations, as well as exact copies of the code that can be used to duplicate this project at tinkercliffs1.arc.vt.edu
 
