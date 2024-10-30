@@ -63,4 +63,4 @@ The code is located in the following path: `code/spades.sh`.
 ```
     module load Anaconda3
     source activate SPAdes_v4.0.0_env
-    ```
+```
