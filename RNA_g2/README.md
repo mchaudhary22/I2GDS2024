@@ -526,7 +526,7 @@ samtools view -bS input.sam > output.bam
 samtools sort output.bam -o output_sorted.bam
 ```
 ```
-#makes an indec file called output_sorted.bam.bai
+#makes an index file called output_sorted.bam.bai
 samtools index output_sorted.bam
 ```
 If you have been following the exact protocol up to this point your SAM files are named 0.sam - 4.sam and you can submit all 3 of the above steps as a single slurm job by doing the following
