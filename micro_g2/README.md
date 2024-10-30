@@ -25,17 +25,12 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 The assemblies downloaded and used in this pipeline can be found in the `data/` directory.
 
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
-1.1 Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
-- To download a file from the specified URL:
+Install `fastp` by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
 ```
-wget http://opengene.org/fastp/fastp
+wget http://opengene.org/fastp/fastp     #to download a file from the specified URL
+chmod a+x ./fastp     #to make the downloaded file executable
 ```
-- To make the downloaded file executable
-```
-chmod a+x ./fastp 
-```
-
-  - `fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
+fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
     - Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
   - 
