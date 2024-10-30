@@ -31,7 +31,7 @@ To install the minimum programs needed in a conda environment run
     
 ```
 source ~/.bashrc
-conda create -N RNA2-seq -y
+conda create -n RNA2-seq -y
 conda activate RNA2-seq
 conda install -c bioconda sra-tools -y
 conda install -c bioconda trimmomatic -y
