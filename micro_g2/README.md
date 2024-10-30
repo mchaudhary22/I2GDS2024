@@ -30,7 +30,9 @@ Install `fastp` by following the instructions at the [GitHub](https://github.com
 wget http://opengene.org/fastp/fastp     #to download a file from the specified URL
 chmod a+x ./fastp     #to make the downloaded file executable
 ```
-fastp.py` : Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
+
+`fastp.py` : 
+Python script to handle raw FASTQ data and run fastp for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
     - Specify the path to locate `fastp` and change the input and output directories in `fastp.py` before use.
   - 
