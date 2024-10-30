@@ -23,7 +23,8 @@ See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) fo
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
-- *Data availability: Data needed for this step should be downloaded from previous step or it can be found in `/projects/intro2gds/I2GDS2024/micro_g2/rawdata` on ARC. You can copy the raw files from our directory using the following command.*
+ > [!NOTE]
+ > Data needed for this step should be downloaded from previous step or it can be found in `/projects/intro2gds/I2GDS2024/micro_g2/rawdata` on I2GDS ARC. You can copy the raw files from our directory using the following command.*
   ```
   cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your designated location
   ```
