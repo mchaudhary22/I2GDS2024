@@ -30,7 +30,8 @@ It is necessary to install these programs with conda in a single environment bef
 * sra-tools-2.10.0
 * trimmomatic-0.39
 * hisat2-2.2.1
-* subread-2.0.1 
+* subread-2.0.1
+  
 To install the minimum programs needed in a conda environment run
     
 ```
