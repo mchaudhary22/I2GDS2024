@@ -27,6 +27,10 @@ This project analyzes RNA-seq data. It includes:
 
     
 It is necessary to install these programs with conda in a single environment before beginning.
+* sra-tools-2.10.0
+* trimmomatic-0.39
+* hisat2-2.2.1
+* subread-2.0.1 
 To install the minimum programs needed in a conda environment run
     
 ```
@@ -36,7 +40,7 @@ conda activate RNA2-seq
 conda install -c bioconda sra-tools -y
 conda install -c bioconda trimmomatic -y
 conda install -c bioconda hisat2 -y
-conda install -c bioconda subreads -y
+conda install -c bioconda subread -y
 ```
     
 </details>
