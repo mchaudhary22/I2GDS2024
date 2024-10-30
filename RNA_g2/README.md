@@ -30,7 +30,8 @@ It is necessary to install these programs with conda in a single environment bef
 To install the minimum programs needed in a conda environment run
     
 ```
-conda create -N RNA2-seq
+source ~/.bashrc
+conda create -N RNA2-seq -y
 conda activate RNA2-seq
 conda install -c bioconda sra-tools -y
 conda install -c bioconda trimmomatic -y
@@ -47,6 +48,7 @@ conda install -c bioconda subreads -y
 The only constant is change, if the programs used have changed change your file types with these tools   
 If you wish to work with the data in any other formats consider installing gffread and samtools
 ```
+source ~/.bashrc
 conda activate RNA2-seq
 conda install -c bioconda gffread -y
 conda install -c bioconda samtools -y
