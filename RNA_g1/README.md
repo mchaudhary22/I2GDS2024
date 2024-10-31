@@ -12,7 +12,6 @@ To test this pipeline using demo files, follow the pipeline below beginning with
 Contact: Jaret Arnold (amichael19@vt.edu) or Lili Zebluim (liliz@vt.edu)
 
 To do (before finalized):
-- [ ] Test All Code Blocks
 - [ ] Test pipeline file
 - [ ] Fix i dont understand image
 
