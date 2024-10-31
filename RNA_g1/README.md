@@ -72,7 +72,7 @@ fastqc *.fq.gz -o .
 ```
 
 ## 3. Trimmomatic
-Trimmomatic is used to remove adapter sequence contamination and low quality reads. Use your fastqc report to inform you how to best trim your reads. In the case of the demo file, trimming bases at the front (head) will improve the quality of our reads so we will use the HEADCROP option. If trimmomatic is available on your computing environment, installation may be as easy as invoking module load. If not, try installing via the download. Keep in mind larger files (as those in the example) can take some time to be trimmed, so consider batching your job using slurm/sbatch.
+Trimmomatic is used to remove adapter sequence contamination and low quality reads. Use your fastqc report to inform you how to best trim your reads. In the case of the demo file, trimming bases at the front (head) will improve the quality of our reads so we will use the HEADCROP option. If trimmomatic is available on your computing environment, installation may be as easy as invoking module load. If not, try installing via the download. Keep in mind larger files (as those in the example) can take some time to be trimmed, so consider **batching your job using slurm/sbatch**.
 <need to doublecheck the installation code>
 
 #### Installation via module load:
