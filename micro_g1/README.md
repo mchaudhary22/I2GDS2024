@@ -416,7 +416,7 @@ print("All .faa files cleaned and saved to the output directory.")
 
 </details>
 
-#### 3.3.2 Create a Database with MMseqs2
+### 3.3.2 Create a Database with MMseqs2
 MMseqs2 requires the creation of a sequence database. Use the following command to create the database from your .faa files:
 
     mmseqs createdb /results/03_prodigal/all_faa_files/*.faa /results/mmseqs2_db
