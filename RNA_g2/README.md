@@ -31,7 +31,8 @@ It is necessary to install these programs with conda in a single environment bef
 * trimmomatic-0.39
 * hisat2-2.2.1
 * subread-2.0.1
-  newer versions are not garunteed
+
+   newer versions are not garunteed
   
 To install the minimum programs needed in a conda environment run
     
