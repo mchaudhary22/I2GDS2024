@@ -182,7 +182,8 @@ mkdir /path/to/genomeindex
 #Run STAR with 6 Threads (--runThreadN) using the test genomic fasta (--genomeFastaFiles) and gtf file (--sjdbGTFfile)
 #to output in the folder previously created
 
-STAR --runThreadN 6 \
+STAR runMode alignReads \
+--runThreadN 6 \
 --runMode genomeGenerate \
 --genomeDir genomeindex \
 --genomeFastaFiles arabidopsisgenome.fa \
