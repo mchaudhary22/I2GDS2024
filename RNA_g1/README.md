@@ -182,8 +182,7 @@ mkdir /path/to/genomeindex
 #Run STAR with 6 Threads (--runThreadN) using the test genomic fasta (--genomeFastaFiles) and gtf file (--sjdbGTFfile)
 #to output in the folder previously created
 
-STAR runMode alignReads \
---runThreadN 6 \
+STAR --runThreadN 6 \
 --runMode genomeGenerate \
 --genomeDir genomeindex \
 --genomeFastaFiles arabidopsisgenome.fa \
@@ -223,10 +222,11 @@ STAR runMode alignReads \
 #using compressed gzip files (readFilesCommand),
 #and output as a BAM which is sorted (--outSAMtype)
 
-path/to/STAR-2.7.11b/source/STAR --runThreadN 6 \
+path/to/STAR-2.7.11b/source/STAR runMode alignReads \
+--runThreadN 6 \
 --genomeDir genomeindex \
---readFilesIn D0C1_1.trim.fq.gz D0C1_2.trim.fq.gz \ 
 --readFilesCommand zcat \
+--readFilesIn D0C1_1.trim.fq.gz D0C1_2.trim.fq.gz \
 --outSAMtype BAM SortedByCoordinate
 
 ```
