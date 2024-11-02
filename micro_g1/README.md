@@ -1,5 +1,6 @@
 # Introduction to Microbiome Pipeline Tools
 This pipeline employs three key tools — QUAST, Prodigal, and MMSeq2 — for evaluating genome assembly quality, predicting gene sequences, and clustering gene families. These steps are essential in genome/microbiome studies, especially for accurate assembly assessment, gene identification, and comparative analysis across genomes.
+
 This repo was developed as part of the curriculum for Virginia Tech’s Introduction to Genomic Data Science course. It provides example scripts for performing genomic/microbiome analyses, though some paths may need to be adjusted depending on your installation method or file locations. Please ensure your script paths, data files, and working directory are correctly specified for smooth execution.
 
 For questions or assistance, feel free to reach out to:
