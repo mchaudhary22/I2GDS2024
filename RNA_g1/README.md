@@ -258,7 +258,7 @@ featureCounts
 ```bash
 
 #run featurecounts on paired end (p) data with an (-a) annotation file (.gtf/gff) using the previously created .bam (Aligned.sortedByCoord.out.bam) and output (-o) as a file named testcount.txt
-featureCounts -p -a arabidopsisgenome.gtf -o testcount.txt Aligned.sortedByCoord.out.bam
+featureCounts -p -a /path/to/arabidopsisgenome.gtf -o testcount.txt /path/to/Aligned.sortedByCoord.out.bam
 
 ```
 
