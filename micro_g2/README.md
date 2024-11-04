@@ -65,9 +65,9 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
   - The `--isolate` option in SPAdes was used because the genome being sequenced in this tutorial is from a single, isolated organism (e.g., a bacterial isolate), rather than a mixed sample or metagenome.
   - **Input**: Single-end FASTQ files in your defined `data_dir`, where each file is named in the format `*_QC.fastq.gz` (output of fastp in previous step).
-  - **Expected output**: It will create 2 folder in your defined `output_dir/`:
-    - `contigs/`: Contains filtered contigs files for each sample.
-    - `scaffolds/`: Contains filtered scaffolds files for each sample.
+  - **Expected output**: It will create 2 folders in your defined `output_dir/`:
+    - `contigs/`: Directory contains filtered contigs files for each sample.
+    - `scaffolds/`: Directory contains filtered scaffolds files for each sample.
   - After modifications, run the following to execute the code.
     ```
     sbatch spades.sh
@@ -79,3 +79,35 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2741544.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.   
 
 ## Step 3: To assesses the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
+- Install **CheckM2** by following the instructions at the [GitHub](https://github.com/chklovski/CheckM2).
+- For simplicity, you can just download CheckM2 from GitHub and run it directly without installing.
+  - Retrieve the files:
+    ```
+    git clone --recursive https://github.com/chklovski/checkm2.git && cd checkm2
+    ```
+  - Create an appropriate Conda environment with prerequisites using the checkm2.yml file:
+    ```
+    conda env create -n checkm2 -f checkm2.yml
+    conda activate checkm2
+    ```
+  - Finally, check the help menu for CheckM2:
+    ```
+    bin/checkm2 -h
+    ```
+- `checkm2.sh`: Bash script to performs quality control using **CheckM2**.
+  - Please be reminded to change the path for the input and output directories before running the code. 
+  - **Input**: Assembled genomes in your defined `data_dir`, where each file is named in the format `*_contigs.fasta` (output of SPAdes in previous step).
+  - **Expected output**: It will create 2 folders and 2 files in your defined `output_dir/`:
+    - `diamond_output/`: Directory contains DIAMOND results.
+    - `protein_files/`: Directory contains .faa files.
+    - `checkm2.log`: Log file summarizing the CheckM2 run.
+    - `qualty_report.tsv`: .tsv file summarizing the CheckM2 output. This is the main output file for running this program.
+  - After modifications, run the following to execute the code.
+    ```
+    sbatch checkm2.sh
+    ```
+> [!NOTE]
+> The data required for Step 3 can be found in `data/Step_3/` directory on this GitHub.
+
+> [!NOTE]
+> Example `.tsv` output file were also provided in the `code/` directory for reference.
