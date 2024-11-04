@@ -101,7 +101,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     - `diamond_output/`: Directory contains DIAMOND results.
     - `protein_files/`: Directory contains .faa files.
     - `checkm2.log`: Log file summarizing the CheckM2 run.
-    - `qualty_report.tsv`: .tsv file summarizing the CheckM2 output. This is the main output file for running this program.
+    - `qualty_report.tsv`: .tsv file summarizing the CheckM2 output. This is the **main output file** for running this program.
   - After modifications, run the following to execute the code.
     ```
     sbatch checkm2.sh
