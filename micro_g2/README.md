@@ -73,7 +73,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch spades.sh
     ```
 > [!NOTE]
-> The data required for Step 2 can be found in `data/` directory on this GitHub.
+> The data required for Step 2 can be found in `data/Step_2/` directory on this GitHub.
 
 > [!NOTE]
 > We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2741544.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.   
