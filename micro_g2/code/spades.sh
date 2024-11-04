@@ -13,8 +13,8 @@
 #SBATCH --mail-type=FAIL #include to get emailed if job fails
 
 # Define paths
-data_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/"
-output_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/"
+data_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/" # Updated to your input_path
+output_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/" # Updated to your output_path
 spades_path="/projects/leaph/.pyenv/versions/mambaforge/bin/spades.py"  # Updated path to spades.py
 
 # Create output directories if they don't exist
