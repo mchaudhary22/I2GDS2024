@@ -59,10 +59,6 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   conda install bioconda::spades=4.0.0     #to install SPAdes v4 from the Bioconda channel into the active environment
   ```
 - `spades.sh`: Bash script to performs a single-end (SE) genome assembly using SPAdes, then filters contigs and scaffolds based on length and coverage.
-  - Before running the script, ensure that **seqtk** (a lightweight tool for sequence processing) is installed in your conda environment. Install **seqtk** using `conda install -c bioconda seqtk`.
-    - This code uses **seqtk** to filter out contigs and scaffolds below the minimum length.
-    - This code uses **awk** (a standard Linux tool for text processing) to filter based on minimum coverage.
-    - You can also modify the minimum contig length and coverage cutoff in `spades.sh` for quality control purposes.
   - You need to specify the path to `spades` and adjust the input and output directories in the script. You can find the path for your SPAdes installed using:
     ```
     which spades.py
