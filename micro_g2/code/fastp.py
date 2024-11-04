@@ -6,8 +6,8 @@ import os
 import subprocess
 
 # Define the path to your raw FASTQ data and the output directory for QC files
-data_dir = '/projects/intro2gds/I2GDS2024/micro_g2/rawdata/fastq_files/' #need to be modified accordingly
-output_dir = '/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/' #need to be modified accordingly
+data_dir = '/projects/intro2gds/I2GDS2024/micro_g2/rawdata/fastq_files/' # need to be modified accordingly
+output_dir = '/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/' # need to be modified accordingly
 
 # Path to the fastp executable
 fastp_path = '/projects/intro2gds/I2GDS2024/micro_g2/software/fastp' #need to be modified accordingly
