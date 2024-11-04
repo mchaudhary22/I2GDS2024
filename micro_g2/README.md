@@ -73,7 +73,10 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch spades.sh
     ```
 > [!NOTE]
-> The data required for Step 2 can be found in `data/Step_2/` directory on this GitHub.
+> The data required for Step 2 can be found in `data/Step_2/` directory on this GitHub or you can copy the files directly from our directory using the following command:
+> ```
+> cp -r /projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian /path/to/destination    #change '/path/to/destination' to your location
+> ```
 
 > [!NOTE]
 > We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2741544.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.   
@@ -107,7 +110,10 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch checkm2.sh
     ```
 > [!NOTE]
-> The data required for Step 3 can be found in `data/Step_3/` directory on this GitHub.
+> The data required for Step 3 can be found in `data/Step_3/` directory on this GitHub or you can copy the files directly from our directory using the following command:
+> ```
+> cp -r /projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/contigs /path/to/destination     #change '/path/to/destination' to your location
+> ```
 
 > [!NOTE]
 > Example `.tsv` output file were also provided in the `code/` directory for reference.
