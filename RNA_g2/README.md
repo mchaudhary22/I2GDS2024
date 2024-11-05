@@ -3,7 +3,7 @@ Contact: Matt Gilfus (marrett@vt.edu) and Abigayle Pollock (abigaylep@vt.edu)
 
 This repo was created through the Introduction to Genomic Data Science Class at Virginia Tech. For another RNAseq pipeline example, see RNA_g1!
 
-*FOR EVALUATORS: You will be scoring the data download, HISAT2, and visualization sections*
+**FOR EVALUATORS: You will be scoring the data download, HISAT2, and visualization sections**
 
 # Using this guide
 Each step in the RNAseq pipeline RNA2seq is laid out here step by step. Example data used for this project can be found at:(https://link.springer.com/article/10.1186/s13059-020-02145-6)
