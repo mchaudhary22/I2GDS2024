@@ -81,7 +81,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > [!NOTE]
 > We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2758888.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.   
 
-## Step 3: To assesses the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
+## Step 3: Assess the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
 - Install **CheckM2** by following the instructions at the [GitHub](https://github.com/chklovski/CheckM2).
 - For simplicity, you can just download CheckM2 from GitHub and run it directly without installing.
   - Retrieve the files:
@@ -97,7 +97,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     ```
     bin/checkm2 -h
     ```
-- `checkm2.sh`: Bash script to performs quality control using **CheckM2**.
+- `checkm2.sh`: Bash script to assess assembly quality using **CheckM2**.
   - Please be reminded to change the path for the input and output directories before running the code. 
   - **Input**: Assembled genomes in your defined `data_dir`, where each file is named in the format `*_contigs.fasta` (output of SPAdes in previous step).
   - **Expected output**: It will create 2 folders and 2 files in your defined `output_dir/`:
