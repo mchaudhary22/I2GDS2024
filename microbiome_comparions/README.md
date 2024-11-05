@@ -45,7 +45,10 @@ The field of microbiome analysis is advancing quickly thanks to new technologies
 
 <h2>References</h2>
 - Bharti, R., & Grimm, D. G. (2021). Current challenges and best-practice protocols for microbiome analysis. In Briefings in Bioinformatics (Vol. 22, Issue 1, pp. 178–193). Oxford University Press. https://doi.org/10.1093/bib/bbz155
+
 - Galloway-Peña, J., & Hanson, B. (2020). Tools for Analysis of the Microbiome. In Digestive Diseases and Sciences (Vol. 65, Issue 3, pp. 674–685). Springer. https://doi.org/10.1007/s10620-020-06091-y
+  
 - Gehrig, J. L., Portik, D. M., Driscoll, M. D., Jackson, E., Chakraborty, S., Gratalo, D., Ashby, M., & Valladares, R. (2022). Finding the right fit: evaluation of short-read and long-read sequencing approaches to maximize the utility of clinical microbiome data. Microbial Genomics, 8(3). https://doi.org/10.1099/mgen.0.000794
+
 - Gladman, N., Goodwin, S., Chougule, K., Richard McCombie, W., & Ware, D. (2023). Era of gapless plant genomes: innovations in sequencing and mapping technologies revolutionize genomics and breeding. In Current Opinion in Biotechnology (Vol. 79). Elsevier Ltd. https://doi.org/10.1016/j.copbio.2022.102886
 
