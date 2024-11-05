@@ -1,7 +1,7 @@
 ## Pipeline for assembling short read sequence data
 Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or Saehah Yi (shyi@vt.edu)
 
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code and some of the data needed for this pipeline can be found at the `code/` and `data/` directories, respectively.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code/` directory.
 
 For another whole genome assembling pipeline example, see micro_g1!
 
@@ -59,13 +59,13 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   conda install bioconda::spades=4.0.0     #to install SPAdes v4 from the Bioconda channel into the active environment
   ```
 - `spades.sh`: Bash script to performs a single-end (SE) genome assembly using SPAdes, then filters contigs and scaffolds based on length and coverage.
-  - You need to specify the path to `spades` and adjust the input and output directories in the script. You can find the path for your SPAdes installed using:
+  - You need to specify the path to `spades` installed and adjust the input and output directories in the script. You can find the path for your SPAdes installed using:
     ```
     which spades.py
     ```
   - The `--isolate` option in SPAdes was used because the genome being sequenced in this tutorial is from a single, isolated organism (e.g., a bacterial isolate), rather than a mixed sample or metagenome.
   - **Input**: Single-end FASTQ files in your defined `data_dir`, where each file is named in the format `*_QC.fastq.gz` (output of fastp in previous step).
-  - **Expected output**: It will create 2 folders in your defined `output_dir/`:
+  - **Expected output**: It will create 2 directories in your defined `output_dir/`:
     - `contigs/`: Directory contains filtered contigs files for each sample.
     - `scaffolds/`: Directory contains filtered scaffolds files for each sample.
   - After modifications, run the following to execute the code.
@@ -110,7 +110,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch checkm2.sh
     ```
 > [!NOTE]
-> The files required for Step 2 can be can be directly copied from our directory using the following command:
+> The files required for Step 3 can be can be directly copied from our directory using the following command:
 > ```
 > cp -r /projects/intro2gds/I2GDS2024/micro_g2/data/3_checkm2_input /path/to/destination     #change '/path/to/destination' to your location
 > ```
