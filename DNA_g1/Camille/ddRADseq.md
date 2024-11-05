@@ -83,3 +83,9 @@ Using populations I will be able to calculate π, FIS, and FST.  Each individual
 ```bash
 populations -P ./gstacks/ --popmap ./Dan_info.txt --smooth -r 0.55 -min-maf 0.05 -t 8 --write-random-snp
 ```
+# References
+https://catchenlab.life.illinois.edu/stacks/
+
+https://www.htslib.org/doc/samtools.html
+
+https://bowtie-bio.sourceforge.net/bowtie2/index.shtml
