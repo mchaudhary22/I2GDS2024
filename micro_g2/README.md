@@ -1,7 +1,7 @@
 ## Pipeline for assembling short read sequence data
 Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or Saehah Yi (shyi@vt.edu)
 
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code/` directory.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
 
 For another whole genome assembling pipeline example, see micro_g1!
 
@@ -38,7 +38,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   - **Input**: FASTQ files (either single-end or paired-end)
     - for single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
     - for paired-end data, specify read2 input by `-I` or `--in2`, and specify read2 output by `-O` or `--out2`.
-    - `fastp.py` in `code/` is written for single-end data, you will need to modify the code your data is paired-end.
+    - `fastp.py` in `code_linux/` is written for single-end data, you will need to modify the code your data is paired-end.
   - **Expected output**: `_QC.fastq.gz` gzip-compressed file
   - Run the following to execute the code.
     ```
@@ -79,7 +79,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > ```
 
 > [!NOTE]
-> We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2758888.out`, in the `code/` directory in case you need a reference for how the log file should look when the job runs successfully.   
+> We understand that this is a lengthy step, so we've attached an example SLURM output file, `slurm-2758888.out`, in the `code_linux/` directory in case you need a reference for how the log file should look when the job runs successfully.   
 
 ## Step 3: Assess the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
 - Install **CheckM2** by following the instructions at the [GitHub](https://github.com/chklovski/CheckM2).
@@ -116,4 +116,4 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > ```
 
 > [!NOTE]
-> Example `quality_report.tsv` output file were also provided in the `code/` directory for reference.
+> Example `quality_report.tsv` output file were also provided in the `code_linux/` directory for reference.
