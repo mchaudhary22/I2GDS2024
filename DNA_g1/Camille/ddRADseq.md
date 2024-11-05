@@ -49,7 +49,7 @@ bowtie2 -q --phred33 -N 1 -p 8 -x Danaus -1 A005D02.1.fq -2 A005D02.2.fq -S A005
 ```
 # Convert from samfile to bamfile using samtools
 ```bash
-SAMtools
+module load SAMtools
 samtools view -bS A005D02.sam | samtools sort > A005D02.bam
 ```
 # Run gstacks
