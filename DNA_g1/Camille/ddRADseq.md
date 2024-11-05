@@ -1,15 +1,12 @@
 # ddRADseq Pipeline
-
-
-## Introduction
+![image](https://github.com/user-attachments/assets/7719a6bf-3690-40b3-a1bc-030c044408da)
+Image from: https://catchenlab.life.illinois.edu/stacks/manual/
+# Introduction
 This page is a work in progress!
-This repo explains a basic pipeline for ddRADseq analysis. It was developed as part of curriculum for Virginia Tech's Intro to Genomic Data Science course. This pipeline runs in Linux and relies on Stacks, Bowtie2, and samtools.
+This repo explains a basic pipeline for ddRADseq analysis. It was developed as part of curriculum for Virginia Tech's Intro to Genomic Data Science course. This pipeline runs in Linux and relies on Stacks (version Stacks/2.62-foss-2022a), Bowtie2 (version Bowtie2/2.4.5-GCC-11.3.0), and samtools (version SAMtools/1.16.1-GCC-11.3.0).
 
 Contact: Camille Block (camilleblock@vt.edu)
 
-To do (before finalized):
-- [ ] Run gstacks in stacks
-- [ ] Run populations in stacks 
 
 # Install Stacks using EasyBuild
 If installation via module load is not available for Stacks use the following EasyBuild code to install the software in your linux environment. Please note that you must select the versions of EasyBuild and Stacks that will work for your pipeline which may alter this code.
@@ -56,7 +53,7 @@ SAMtools
 samtools view -bS A005D02.sam | samtools sort > A005D02.bam
 ```
 # Run gstacks
-I fixed my popmap so I am ready to run gstacks.
+Before running gstacks make sure your pop map fits the correct format (ex. A005D02  A0005  Toronto_Fifth)
 ```bash
 gstacks -I ./bamfiles -O ./gstacks_out -M Dan_info.txt -t 2
 ```
