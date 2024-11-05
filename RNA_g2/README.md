@@ -39,6 +39,12 @@ It is necessary to install these programs with conda in a single environment bef
 
    newer versions are not guaranteed
   
+Links to software download pages (if needed, may not be necessary):
+SRA tools: https://github.com/ncbi/sra-tools
+Trimmomatic: https://github.com/usadellab/Trimmomatic/releases
+HiSAT2: http://daehwankimlab.github.io/hisat2/download/
+Feature counts (part of Subread package): https://subread.sourceforge.net
+
 To install the minimum programs needed in a conda environment run
     
 ```
