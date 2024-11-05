@@ -20,10 +20,10 @@ This project analyzes RNA-seq data. It includes:
 <img width="1100" alt="Screenshot 2024-10-29 at 12 25 57 PM" src="https://github.com/user-attachments/assets/ed70952e-f9f6-4b4d-8345-589fdfaa1cce">
 
 
-# Set up RNA2-seq environment
+# Set up RNA2-seq environment *(evaluator may want to go over this before they start)*
 
 <details>
-<summary> Hard requirements *(evaluator may want to go over this before they start)* </summary>
+<summary> Hard requirements  </summary>
 
     
 It is necessary to install these programs with conda in a single environment before beginning.
@@ -63,7 +63,7 @@ conda install -c bioconda samtools -y
 
 </details>
 
-# Data Retrieval via SRA-tools *(part 1 of evaluation downloading the data)*
+# Data Retrieval via SRA-tools *(Part 1 of evaluation downloading the data)*
 
 </details>
 
