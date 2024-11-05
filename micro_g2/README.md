@@ -45,7 +45,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     python3 fastp.py
     ```
 > [!NOTE]
-> The data required for Step 1 should be downloaded from NCBI SRA, or it can be found on ARC. You can copy the raw files directly from our directory using the following command:
+> The files required for Step 1 should be downloaded from NCBI SRA, or it can be directly copied from our directory using the following command:
 > ```
 > cp -r /projects/intro2gds/I2GDS2024/micro_g2/rawdata /path/to/destination     #change '/path/to/destination' to your location
 > ```
@@ -73,7 +73,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch spades.sh
     ```
 > [!NOTE]
-> The data required for Step 2 can be found in `data/Step_2/` directory on this GitHub or you can copy the files directly from our directory using the following command:
+> The files required for Step 2 (`*_QC.fastq.gz`) can be can be directly copied from our directory using the following command:
 > ```
 > cp -r /projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian /path/to/destination    #change '/path/to/destination' to your location
 > ```
@@ -110,7 +110,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch checkm2.sh
     ```
 > [!NOTE]
-> The data required for Step 3 can be found in `data/Step_3/` directory on this GitHub or you can copy the files directly from our directory using the following command:
+> The files required for Step 2 can be can be directly copied from our directory using the following command:
 > ```
 > cp -r /projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/contigs /path/to/destination     #change '/path/to/destination' to your location
 > ```
