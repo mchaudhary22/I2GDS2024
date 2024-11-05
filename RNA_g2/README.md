@@ -23,7 +23,7 @@ This project analyzes RNA-seq data. It includes:
 # Set up RNA2-seq environment
 
 <details>
-<summary> Hard requirements </summary>
+<summary> Hard requirements (evaluator may want to go over this before they start) </summary>
 
     
 It is necessary to install these programs with conda in a single environment before beginning.
@@ -32,7 +32,7 @@ It is necessary to install these programs with conda in a single environment bef
 * hisat2-2.2.1
 * subread-2.0.1
 
-   newer versions are not garunteed
+   newer versions are not guaranteed
   
 To install the minimum programs needed in a conda environment run
     
@@ -63,7 +63,7 @@ conda install -c bioconda samtools -y
 
 </details>
 
-# Data Retrieval via SRA-tools
+# Data Retrieval via SRA-tools (part 1 of evaluation downloading the data)
 
 </details>
 
@@ -259,7 +259,7 @@ run
 
 </details>
 
-# HISAT2
+# HISAT2 (Part 1 and 2 of evlauation downloading data and using HISAT2)
 
 <details>
 <summary> Setup HISAT2 </summary>
@@ -510,7 +510,7 @@ sbatch counter.sh
 ```
 </details>
 
-# Visualization
+# Visualization (Part 3 of evaluation using IGV for visualization) 
 <details>
 <summary> Integrative Genomics Viewer </summary>
 
