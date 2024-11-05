@@ -4,12 +4,13 @@ Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or
 This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
 
 For another whole genome assembling pipeline example, see micro_g1!
+![image](https://github.com/user-attachments/assets/210880d4-4c89-4cf8-b82b-207a0b1ea22c)
 
 ## Dependencies & version information
 Ensure the following dependencies are installed to run the pipeline:
 - fastp v.0.23.4
 - SPAdes v.4.0.0
-- checkm2 v.1.0.2
+- CheckM2 v.1.0.2
 
 ## Data download
 Download genomic data from [NCBI Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra) using the [SRA Toolkit v.3.1.1](https://github.com/ncbi/sra-tools).
