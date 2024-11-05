@@ -44,6 +44,7 @@ The general structure of microbiome analysis pipelines can be broadly delineated
 The field of microbiome analysis is advancing quickly thanks to new technologies. However, the complexity of the data and the fast pace of technological advancements bring ongoing challenges that need creative solutions. As we improve sequencing techniques and bioinformatics tools, it's crucial to also focus on standardizing methods and ensuring ethical practices. By addressing these challenges directly, we can keep microbiome analysis strong, leading to important discoveries that greatly enhance our understanding of the microbial world.
 
 <h2>References</h2>
+
 - Bharti, R., & Grimm, D. G. (2021). Current challenges and best-practice protocols for microbiome analysis. In Briefings in Bioinformatics (Vol. 22, Issue 1, pp. 178–193). Oxford University Press. https://doi.org/10.1093/bib/bbz155
 
 - Galloway-Peña, J., & Hanson, B. (2020). Tools for Analysis of the Microbiome. In Digestive Diseases and Sciences (Vol. 65, Issue 3, pp. 674–685). Springer. https://doi.org/10.1007/s10620-020-06091-y
