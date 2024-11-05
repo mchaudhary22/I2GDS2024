@@ -11,6 +11,9 @@ Please read each step in its entirety before testing any of the code. There is s
 
 # RNA2-seq Pipeline
 
+
+<details>
+<summary> What can this pipline do </summary>
 This project analyzes RNA-seq data. It includes:
 - Retrieval of data with SRA-tools
 - Integrity checks with md5sum
@@ -18,7 +21,7 @@ This project analyzes RNA-seq data. It includes:
 - Alignment with HISAT2
 - Quantification with featureCounts (installed as subreads)
 <img width="1100" alt="Screenshot 2024-10-29 at 12 25 57 PM" src="https://github.com/user-attachments/assets/ed70952e-f9f6-4b4d-8345-589fdfaa1cce">
-
+</details>
 
 # Set up RNA2-seq environment *(evaluator may want to go over this before they start)*
 
