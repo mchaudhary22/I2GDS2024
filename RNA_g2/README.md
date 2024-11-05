@@ -63,7 +63,7 @@ conda install -c bioconda samtools -y
 
 </details>
 
-# Data Retrieval via SRA-tools (part 1 of evaluation downloading the data)
+# Data Retrieval via SRA-tools *(part 1 of evaluation downloading the data)*
 
 </details>
 
@@ -259,7 +259,7 @@ run
 
 </details>
 
-# HISAT2 (Part 1 and 2 of evlauation downloading data and using HISAT2)
+# HISAT2 *(Part 1 and 2 of evlauation downloading data and using HISAT2)*
 
 <details>
 <summary> Setup HISAT2 </summary>
@@ -510,7 +510,7 @@ sbatch counter.sh
 ```
 </details>
 
-# Visualization (Part 3 of evaluation using IGV for visualization) 
+# Visualization *(Part 3 of evaluation using IGV for visualization)* 
 <details>
 <summary> Integrative Genomics Viewer </summary>
 
@@ -605,7 +605,7 @@ Now (once this has run) you have 0_sorted.bam - 4_sorted.bam and 0_sorted.bam.ba
 
 Integrative Genomics Viewer (IGV) can be used as a web application however due to the large size of BAM files it is suggested that you install it on your local computer for best results. IGV can be obtained for free under an open-source MIT license (my favorite kind of license) at https://igv.org/ 
 
-This means you will also need the .bam and .bam.bai files on your local computer please download them if you have been working on ARC up to this point, I recommend opening a Linux terminal on your computer and using `scp name@server:/path/to/file/sorted.bam /path/to/local/download_folder` consider using \*sorted.ba\* as a way to indicate all you sorted.bam and sorted.bam.bai at the same time to download all of them at once if you have followed the naming convention laid out above. If you are evaluating this pipeline note that files
+This means you will also need the .bam and .bam.bai files on your local computer please download them if you have been working on ARC up to this point, I recommend opening a Linux terminal on your computer and using `scp name@server:/path/to/file/sorted.bam /path/to/local/download_folder` consider using \*sorted.ba\* as a way to indicate all you sorted.bam and sorted.bam.bai at the same time to download all of them at once if you have followed the naming convention laid out above. *If you are evaluating this pipeline note that files 0 and 2 are much smaller and you can assess how the pipeline works using just them, no need to download the gigabyte-size files on your personal computer.*
 
 Once IGV, the BAM, and BAI files are all on your computer open IGV, and in the top left you can find the genome you want to compare your RNAseq data to, if you are following along with the data used in the original project mouse (GRCm39/mm39) is the same genome you downloaded from NCBI earlier so you can use this one. If not you can select from the supplied genomes or upload your own.
 
