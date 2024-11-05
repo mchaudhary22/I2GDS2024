@@ -55,7 +55,7 @@ samtools view -bS A005D02.sam | samtools sort > A005D02.bam
 ```
 # Run gstacks
 gstacks identifies SNPs within the meta population for each locus and then genotypes each individual at each identified SNP. It also phases the SNPs at each locus into haplotypes.
-Before running gstacks make sure your pop map fits the correct format. This map should contain all necessary information about the sampling site and should be saved in .txt file.
+Before running gstacks make sure your pop map fits the correct format. This map should contain all necessary information about the sampling site and should be saved in .txt file. In the example, the numbered groups correspond to levels of socioeconomic status.
 
 Example pop map format:
 
