@@ -4,9 +4,10 @@ Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or
 
 This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
 
-This repo was developed as part of the curriculum for Virginia Tech’s Introduction to Genomic Data Science course. Please make sure the script paths, data files, and working directory are correctly specified for smooth execution.
+> [!NOTE]This repo was developed as part of the curriculum for Virginia Tech’s Introduction to Genomic Data Science course. Please make sure the script paths, data files, and working directory are correctly specified for smooth execution.
 
-The image below, modified from [Del Angel et al., 2018[(https://f1000research.com/articles/7-148/v1) summarizes our 3-step pipeline:
+The image below, modified from [Del Angel et al., 2018](https://f1000research.com/articles/7-148/v1) summarizes our 3-step pipeline:
+
 ![image](https://github.com/user-attachments/assets/8ccd585f-a9e8-4cca-9413-2e154410c557)
 
 For another whole genome assembling pipeline example, see [micro_g1](https://github.com/LiLabAtVT/I2GDS2024/tree/main/micro_g1)!
