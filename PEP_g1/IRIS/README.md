@@ -69,6 +69,8 @@ wc -l locus_names.txt
 
 ## 2. Generate a phylogeny tree using IQTREE 2.3.6
 
+IQ-TREE is a highly efficient and versatile software for phylogenetic inference, designed to handle large-scale genomic data. It employs advanced algorithms to reconstruct evolutionary trees using maximum likelihood methods, offering both speed and accuracy.
+
 Create a subdirectory called ```iqtree``` in PEP_g1 and copy the aligned faa to that directory.
 
 ```
