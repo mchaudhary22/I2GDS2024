@@ -37,7 +37,7 @@ datasets
 datasets download genome accession GCF_018135715.1 --filename danausgenome.zip
 ```
 # Index genome with Bowtie2
-Edit with appropriate files containing reference genome and name of files you are creating.
+Edit with appropriate files containing reference genome and name of files you are creating. 
 ```bash
 module load Bowtie2
 bowtie2-build -f GCF_018135715.1_MEX_DaPlex_genomic.fna Danaus
@@ -48,17 +48,19 @@ Note: this should be done in globalscratch so make a folder and transfer over fi
 bowtie2 -q --phred33 -N 1 -p 8 -x Danaus -1 A005D02.1.fq -2 A005D02.2.fq -S A005D02.sam
 ```
 # Convert from samfile to bamfile using samtools
+This code turns files into bamfiles which are smaller and easier for programs to handle.
 ```bash
 module load SAMtools
 samtools view -bS A005D02.sam | samtools sort > A005D02.bam
 ```
 # Run gstacks
-Before running gstacks make sure your pop map fits the correct format (ex. A005D02  A0005  Toronto_Fifth)
+gstacks identifies SNPs within the meta population for each locus and then genotypes each individual at each identified SNP. It also phases the SNPs at each locus into haplotypes.
+Before running gstacks make sure your pop map fits the correct format (ex. A005D02  A0005  Toronto_Fifth) 
 ```bash
 gstacks -I ./bamfiles -O ./gstacks_out -M Dan_info.txt -t 2
 ```
 # Generate statistics using populations
-Using populations I will be able to calculate π, FIS, and FST.  Each individual was assigned to their sampling locale in the popmap, with loci present in at least 50% of individuals (--R 0.5), global minor allele frequency of 5% (--min-maf 0.05), and one random SNP per stack. 
+Using populations I will be able to calculate π, FIS, and FST.  Each individual was assigned to their sampling locale in the popmap, with loci present in at least 50% of individuals (--R 0.5), global minor allele frequency of 5% (--min-maf 0.05), and one random SNP per stack. Populations also exports SNP data into standard output formats.
 ```bash
 populations -P ./gstacks/ --popmap ./Dan_info.txt --smooth -r 0.55 -min-maf 0.05 -t 8 --write-random-snp
 ```
