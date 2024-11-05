@@ -55,7 +55,7 @@ Use ```mafft --version``` to ensure the version that you are installing
 ### 1.4 Run Mafft 
 
 ```
-mafft-linsi 129755at50557.fas > 129755at50557_aligned.fas
+mafft 129755at50557.fas > 129755at50557_aligned.fas
 ```
 
 After running Mafft, you have an output file called ```129755at50557_aligned.fas``` in your directory.
