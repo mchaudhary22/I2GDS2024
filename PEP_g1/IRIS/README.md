@@ -58,9 +58,9 @@ Use ```mafft --version``` to ensure the version that you are installing
 mafft-linsi 129755at50557.fas > 129755at50557_aligned.fas
 ```
 
-After running Mafft, you have an output file called ```129755at50557_aligned.fas``` in your unaligned_aa directory.
+After running Mafft, you have an output file called ```129755at50557_aligned.fas``` in your directory.
 
-If you want to process more than one file at a time, you can use a sbatch array. First, we need to have a list of the files that we want to analyze. To do this, you can list the FASTA files in the ```unaligned_aa``` directory and re-direct them to a new text file. Also, you have to check how many lines there are in the locus_names.txt file. That is how many tasks you will need to feed your array. The array job script for running Mafft can be found in ```/projects/intro2gds/I2GDS2024/pep-seq/scripts/iris/arry_mafft.job```
+If you want to process more than one file at a time, you can use a sbatch array. First, we need to have a list of the files that we want to analyze. To do this, you can put all the fasta files in a new directory (eg. ```unaligned_aa```) and list the FASTA files in the ```unaligned_aa``` directory and re-direct them to a new text file (eg. locus_name_list.txt). Also, you have to check how many lines there are in the locus_names.txt file. That is how many tasks you will need to feed your array. The array job script for running Mafft can be found in ```/projects/intro2gds/I2GDS2024/pep-seq/scripts/iris/arry_mafft.job```
 
 ```
 ls *fas > locus_names.txt
