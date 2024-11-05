@@ -23,7 +23,7 @@ This project analyzes RNA-seq data. It includes:
 # Set up RNA2-seq environment
 
 <details>
-<summary> Hard requirements (evaluator may want to go over this before they start) </summary>
+<summary> Hard requirements *(evaluator may want to go over this before they start)* </summary>
 
     
 It is necessary to install these programs with conda in a single environment before beginning.
