@@ -13,7 +13,7 @@ The example of the command that I used to generate unaligned ortholog files for 
 awk 'BEGIN{RS=">"; FS="\n"} {m=(split($1,b,"_")); fnme=b[1]".fas"; n=split(FILENAME,a,"/"); print ">" a[2] "\n" $2 >> fnme; close(fnme);}' *fasta
 sed -i -e 's/.fasta//g' *fas
 ```
-You can test these commands using the demo dataset located at ```/projects/intro2gds/I2GDS2024/pep-seq/rawdata/iris/gene_marker_fasta```. 
+You can test these commands using the demo dataset located at ```/projects/intro2gds/I2GDS2024/pep-seq/rawdata/iris/demo/gene_marker_fasta```. 
 To do so, you can copy the dataset to your own directory using ```cp``` command.
 After running the commands, you should see multiple ```.fas``` files with names like "76830at50557.fas". 
 
