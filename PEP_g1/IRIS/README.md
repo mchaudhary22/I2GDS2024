@@ -14,7 +14,7 @@ awk 'BEGIN{RS=">"; FS="\n"} {m=(split($1,b,"_")); fnme=b[1]".fas"; n=split(FILEN
 sed -i -e 's/.fasta//g' *fas
 ```
 
-We are using 1 ortholog gene to show how to align sequences using Mafft and generate a phylogeny tree of Drosophila using Iqtree.
+We use 1 ortholog gene to show how this pipeline works for sequence alignment using Mafft and Drosophila phylogeny tree reconstruction using Iqtree.
 
 Since we are using only one ortholog gene, we can run the steps directly from the command line. Please run ```interact -A Introtogds -t 3:00:00``` to start an interactive session on a compute node, allowing you to work directly on the node rather than submitting a batch job.
 
