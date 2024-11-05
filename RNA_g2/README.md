@@ -355,7 +355,7 @@ Once the indexing process has finished, HISAT2 can now be used to produce SAM fi
 </details>
 
 <details>
-<summary> HISAT make SAM overview </summary>
+<summary> HISAT2 make SAM overview </summary>
 
 to make the same files with HISAT2 the general format is 
 ```
