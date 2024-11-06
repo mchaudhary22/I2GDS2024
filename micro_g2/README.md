@@ -2,7 +2,7 @@
 
 Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or Saehah Yi (shyi@vt.edu)
 
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
+This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of short read sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
 
 > [!NOTE]
 > This repo was developed as part of the curriculum for Virginia Tech’s Introduction to Genomic Data Science course. Please make sure the script paths, data files, and working directory are correctly specified for smooth execution.
@@ -34,6 +34,8 @@ curl --output sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curre
 See [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) for more detailed instructions on how to install SRA Toolkit.\
 Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For example: `fastq-dump SRR21285231`
 
+For this tutorial, we used three of the four draft genomes from [this publication](https://journals.asm.org/doi/10.1128/mra.00867-22), which can be downloaded from the SRA using the accession numbers `SRP394588`, `SRP394590`, and `SRP394593` or by using the already downloaded data presented in Step 1 below.
+
 ## Step 1: Adapter trimming and quality filtering using [fastp](https://doi.org/10.1093/bioinformatics/bty560)
 - Install **fastp** by following the instructions at the [GitHub](https://github.com/OpenGene/fastp). The method that was used in this tutorial was:
   ```
@@ -42,11 +44,11 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   ```
 - `fastp.py`: Python script to handle raw FASTQ data and run **fastp** for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
-    - Specify/Modify the path to locate **fastp**` and change the input and output directories in `fastp.py` before use.
+    - Specify/modify the path to locate **fastp** and change the input and output directories in `fastp.py` before use.
   - **Input**: FASTQ files (either single-end or paired-end)
-    - for single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
-    - for paired-end data, specify read2 input by `-I` or `--in2`, and specify read2 output by `-O` or `--out2`.
-    - `fastp.py` in `code_linux/` is written for single-end data, you will need to modify the code your data is paired-end.
+    - For single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
+    - For paired-end data, also specify read2 input by `-I` or `--in2`, and specify read2 output by `-O` or `--out2`.
+    - Since `fastp.py` in `code_linux/` is written for single-end data, you will need to modify the code your data is paired-end.
   - **Expected output**: `_QC.fastq.gz` gzip-compressed file
   - Run the following to execute the code.
     ```
@@ -58,7 +60,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > cp -r /projects/intro2gds/I2GDS2024/micro_g2/data/1_fastp_input /path/to/destination     #change '/path/to/destination' to your location
 > ```
 
-## Step 2: De novo assemble the genome using [SPAdes](https://doi.org/10.1002/cpbi.102)
+## Step 2: _De novo_ assembly of genomes using [SPAdes](https://doi.org/10.1002/cpbi.102)
 - Install **SPAdes** by following the instructions at the [GitHub](https://github.com/ablab/spades). An alternative method that was used in this tutorial was installing **SPAdes** into a Anaconda virtual environment using the following code:
   ```
   module load Anaconda3     #to load the Anaconda3 module
@@ -66,8 +68,8 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   source activate SPAdes_v4.0.0_env     #to activate the newly created environment
   conda install bioconda::spades=4.0.0     #to install SPAdes v4 from the Bioconda channel into the active environment
   ```
-- `spades.sh`: Bash script to performs a single-end (SE) genome assembly using SPAdes, then filters contigs and scaffolds based on length and coverage.
-  - You need to specify the path to `spades` installed and adjust the input and output directories in the script. You can find the path for your SPAdes installed using:
+- `spades.sh`: Bash script to perform a single-end (SE) genome assembly using SPAdes, then filter contigs and scaffolds based on length and coverage.
+  - If you installed SPAdes into the ARC instead of using a virtual environment, you need to specify the path to `spades` installed and adjust the input and output directories in the script. You can find the path for your SPAdes installed using:
     ```
     which spades.py
     ```
@@ -81,7 +83,7 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
     sbatch spades.sh
     ```
 > [!NOTE]
-> The files required for Step 2 (`*_QC.fastq.gz`) can be can be directly copied from our directory using the following command:
+> The files required for Step 2 (`*_QC.fastq.gz`) can be directly copied from our directory using the following command:
 > ```
 > cp -r /projects/intro2gds/I2GDS2024/micro_g2/data/2_spades_input /path/to/destination    #change '/path/to/destination' to your location
 > ```
@@ -102,13 +104,14 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   ```
   checkm2 -h
   ```
-- You can also do a test run to make sure checkm2 was installed and is working correctly. See the checkm2 Github for the expected results:
+- You can also do a test run to make sure CheckM2 was installed and is working correctly. See the [CheckM2 Github](https://github.com/chklovski/CheckM2) for the expected results:
   ```
   checkm2 testrun
   ```
 - `checkm2.sh`: Bash script to assess assembly quality using **CheckM2**.
-  - Please be reminded to change the path for the input and output directories before running the code. 
+  - Please be reminded to change the path for the input, output, and diamond directories before running the code. 
   - **Input**: These are your assembled genomes from SPAdes. You can use either the `*_contigs.fasta` or `*_scaffolds.fasta` files, but you should assess the quality of whichever file you will continue to use in your analysis pipeline. Contigs are contiguous sequences of DNA that have been pieced together during the assembly process. Scaffolds are one order higher of genome assembly in which contigs are positioned relative to each other with gaps in between based on the known information about that genome. For genomes with high completeness, it should not matter much file is used.  In this tutorial, we have selected the contigs for further analysis.
+  - The CheckM2 DIAMOND database will need to be installed for rapid annotation of the assemblies. This is done automatically through execution of `checkm2.sh`.
   - **Expected output**: It will create 2 folders and 2 files in your defined `output_dir/`:
     - `diamond_output/`: Directory contains DIAMOND results.
     - `protein_files/`: Directory contains .faa files.
@@ -125,4 +128,4 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > ```
 
 > [!NOTE]
-> The example `quality_report.tsv` output file was also provided in the `code_linux/` directory for you to check if you are able to generate the same file.
+> The example `quality_report.tsv` output file was also provided in the `code_linux/` directory for your reference.
