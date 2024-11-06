@@ -102,16 +102,19 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
   ```
   checkm2 -h
   ```
-
+- You can also do a test run to make sure checkm2 was installed and is working correctly. See the checkm2 Github for the expected results:
+  ```
+  checkm2 testrun
+  ```
 - `checkm2.sh`: Bash script to assess assembly quality using **CheckM2**.
   - Please be reminded to change the path for the input and output directories before running the code. 
-  - **Input**: Assembled genomes in your defined `data_dir`, where each file is named in the format `*_contigs.fasta` (output of SPAdes in previous step).
+  - **Input**: These are your assembled genomes from SPAdes. You can use either the `*_contigs.fasta` or `*_scaffolds.fasta` files, but you should assess the quality of whichever file you will continue to use in your analysis pipeline. Contigs are contiguous sequences of DNA that have been pieced together during the assembly process. Scaffolds are one order higher of genome assembly in which contigs are positioned relative to each other with gaps in between based on the known information about that genome. For genomes with high completeness, it should not matter much file is used.  In this tutorial, we have selected the contigs for further analysis.
   - **Expected output**: It will create 2 folders and 2 files in your defined `output_dir/`:
     - `diamond_output/`: Directory contains DIAMOND results.
     - `protein_files/`: Directory contains .faa files.
     - `checkm2.log`: Log file summarizing the CheckM2 run.
     - `quality_report.tsv`: .tsv file summarizing the CheckM2 output. This is the **main output file** for running this program.
-  - After modifications, run the following to execute the code.
+  - After the appropriate modifications, run the following to execute the code.
     ```
     sbatch checkm2.sh
     ```
@@ -122,4 +125,4 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 > ```
 
 > [!NOTE]
-> Example `quality_report.tsv` output file were also provided in the `code_linux/` directory for reference.
+> The example `quality_report.tsv` output file was also provided in the `code_linux/` directory for you to check if you are able to generate the same file.
