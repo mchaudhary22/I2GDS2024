@@ -62,7 +62,7 @@ mafft 129755at50557.fas > 129755at50557_aligned.fas
 
 After running Mafft, you have an output file called ```129755at50557_aligned.fas``` in your directory.
 
-If you want to process multiple files at once, you can use a ```sbatch``` array. First, gather all the FAS files you want to analyze into a new directory (eg., ```unaligned_aa```). Then, list the FAS files in the unaligned_aa directory and save the list to a new text file (e.g., ```locus_name_list.txt```). Next, check the number of lines in ``` locus_name_list.txt``` —this count represents the number of tasks you will need for your array job.
+If you want to process multiple files at once, you can use a ```sbatch``` array. First, gather all the FASfiles you want to analyze into a new directory (eg., ```unaligned_aa```). Then, list the FAS files in the unaligned_aa directory and save the list to a new text file (e.g., ```locus_name_list.txt```). Next, check the number of lines in ``` locus_name_list.txt``` —this count represents the number of tasks you will need for your array job.
 
 The example of the commands :
 
