@@ -91,20 +91,18 @@ Use `fastq-dump` <SRR-of-interest> to retrieve the file that you want. For examp
 
 ## Step 3: Assess the quality of genome assemblies using [CheckM2](https://doi.org/10.1038/s41592-023-01940-w)
 - Install **CheckM2** by following the instructions at the [GitHub](https://github.com/chklovski/CheckM2).
-- For simplicity, you can just download CheckM2 from GitHub and run it directly without installing.
-  - Retrieve the files:
-    ```
-    git clone --recursive https://github.com/chklovski/checkm2.git && cd checkm2
-    ```
-  - Create an appropriate Conda environment with prerequisites using the checkm2.yml file:
-    ```
-    conda env create -n checkm2 -f checkm2.yml
-    conda activate checkm2
-    ```
-  - Finally, check the help menu for CheckM2:
-    ```
-    bin/checkm2 -h
-    ```
+- The method that was used for this tutorial was installing **CheckM2** in a virtual environment using different code than the GitHub page which seems to run quicker on the VT ARC. This code is as follows:
+  ```
+  module load Anaconda3     #to load the Anaconda3 module
+  conda create --name checkm2     #to create a new Conda environment
+  source activate checkm2     #to activate the newly created environment
+  conda install bioconda::checkm2     #to install checkm2 v1.0.2 from the Bioconda channel into the active environment
+  ```
+- You can open the help menu for CheckM2 to make sure that it correctly installed:
+  ```
+  checkm2 -h
+  ```
+
 - `checkm2.sh`: Bash script to assess assembly quality using **CheckM2**.
   - Please be reminded to change the path for the input and output directories before running the code. 
   - **Input**: Assembled genomes in your defined `data_dir`, where each file is named in the format `*_contigs.fasta` (output of SPAdes in previous step).
