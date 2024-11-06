@@ -15,11 +15,14 @@
 # Define paths
 data_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/fastp_out_yingxian/" # Updated to your input_path
 output_dir="/projects/intro2gds/I2GDS2024/micro_g2/results/spades_out_yingxian/" # Updated to your output_path
-spades_path="/projects/leaph/.pyenv/versions/mambaforge/bin/spades.py"  # Updated path to spades.py
 
 # Create output directories if they don't exist
 mkdir -p $output_dir/contigs
 mkdir -p $output_dir/scaffolds
+
+# Activate the Anaconda environment
+module load Anaconda3
+source activate SPAdes_v4.0.0_env
 
 # Change to the data directory
 cd $data_dir
@@ -33,7 +36,7 @@ do
     else
         # Assemble using SPAdes with --isolate for single-end data
         echo "Assembling ${f} with SPAdes"
-        python $spades_path --isolate -s $f -o ${f%_QC.fastq.gz} -t 3 -m 60
+        spades.py --isolate -s $f -o ${f%_QC.fastq.gz} -t 3 -m 60
 
         # Check the log file for issues
         echo "Check the log file for ${f%_QC.fastq.gz} for any issues."
