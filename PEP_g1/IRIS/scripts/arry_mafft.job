@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH --time=48:00:00   # walltime
+#SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
+#SBATCH --nodes=1   # number of nodes
+#SBATCH --mem-per-cpu=4GB   # memory per CPU core
+#SBATCH --account=introtogds
+#SBATCH -J "Arry_mafft.job"   # job name
+#SBATCH -o %A_%a.mafft.out
+#SBATCH -e %A_%a.mafft.err
+#SBATCH --array=1-1366%10
+#SBATCH --mail-user=yflin@vt.com   # email address
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+
+conda activate mafft
+ #parses locus_names.txt for array
+ locus=$(head -n $SLURM_ARRAY_TASK_ID locus_names.txt | tail -n1)
+ mafft-linsi ${locus} > `basename ${locus} .fas`_aligned.fas
