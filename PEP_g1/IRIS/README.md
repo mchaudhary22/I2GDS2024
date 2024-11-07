@@ -50,7 +50,7 @@ conda create -n mafft -c conda-forge -c bioconda mafft
 ```
 ### 1.3 Activate the environment 
 
-```conda activate mafft```
+```source activate mafft```
 
 Use ```mafft --version``` to confirm that the correct version has been installed.
 
