@@ -109,7 +109,7 @@ For more information on the output files, you can go to [Tutorial#first-running-
 The expected output files can be founded in ```/projects/intro2gds/I2GDS2024/pep-seq/result/iris/```
 If you are running IQREEE with a large data set, please submit it as a SLURM job. A sample job script for running IQ-TREE can be found at ```/projects/intro2gds/I2GDS2024/pep-seq/scripts/iris/iqtree.job```
 
-The tree file can be viewed using different tools such as R studio, [iTOL](https://itol.embl.de/) ,and [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) for downstream analyses in evolutionary biology, ecology, and bioinformatics. 
+The tree file can be viewed using different tools such as R studio, [iTOL](https://itol.embl.de/) ,and [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) to support downstream analyses in evolutionary biology, ecology, and bioinformatics, including testing evolutionary hypotheses and estimating ancestral states.
 
 ## Reference
 Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf, Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020) IQ-TREE 2: New models and efficient methods for phylogenetic inference in the genomic era. Mol. Biol. Evol., in press. https://doi.org/10.1093/molbev/msaa015
