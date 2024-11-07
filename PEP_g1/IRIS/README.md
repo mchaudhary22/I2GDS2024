@@ -45,10 +45,10 @@ cp /projects/intro2gds/I2GDS2024/pep-seq/rawdata/iris/demo/129755at50557.fas .
 ### 1.2 Install [Mafft](https://mafft.cbrc.jp/alignment/software/) using Conda
 
 ```
-module load Anaconda3 
-conda create -n mafft
-source activate mafft
-conda install -c conda-forge -c bioconda mafft
+module load Anaconda3
+conda create -n mafft                               # create a conda environment to hold the packages that we want
+source activate mafft                               # activate the conda environment
+conda install -c conda-forge -c bioconda mafft      # install the package from the specific channels
 ```
 
 Use ```mafft --version``` to confirm that the correct version has been installed.
