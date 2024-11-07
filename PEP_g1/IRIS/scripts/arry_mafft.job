@@ -12,7 +12,7 @@
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
 
-conda activate mafft
+source activate mafft
  #parses locus_names.txt for array
  locus=$(head -n $SLURM_ARRAY_TASK_ID locus_names.txt | tail -n1)
  mafft-linsi ${locus} > `basename ${locus} .fas`_aligned.fas
