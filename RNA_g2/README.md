@@ -74,7 +74,15 @@ conda install -c bioconda samtools -y
 </details>
 
 # Data Retrieval via SRA-tools *(Part 1 of evaluation downloading the data)*
+<details>
+<summary>🔧 Troubleshooting</summary>
 
+This method is very version-dependent and conda, miniconda, and the default on arc all have different versions of fastq-dump, if it is returning errors consider running it without calling any conda environment by removing the lines 
+
+```
+source ~/.bashrc
+conda activate RNA2-seq
+```
 </details>
 
 <details>
