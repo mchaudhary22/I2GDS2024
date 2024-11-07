@@ -83,6 +83,12 @@ This method is very version-dependent and conda, miniconda, and the default on a
 source ~/.bashrc
 conda activate RNA2-seq
 ```
+
+and/or adding this line in their place
+```
+module load tinkercliffs-rome/sratoolkit/3.0.7
+```
+in your sbatch file
 </details>
 
 <details>
