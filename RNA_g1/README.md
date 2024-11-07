@@ -11,10 +11,6 @@ To test this pipeline using demo files, follow the pipeline below beginning with
 
 Contact: Jaret Arnold (amichael19@vt.edu) or Lili Zebluim (liliz@vt.edu)
 
-To do (before finalized):
-- [ ] Test pipeline file
-- [ ] Fix i dont understand image
-
 ## 1. Downloading Test files
 To download the files used in this test workflow, run the following commands in your linux environment in the desired directory. 
 ```bash
@@ -126,7 +122,7 @@ ILLUMINACLIP:/apps/packages/tinkercliffs-rome/trimmomatic/0.39/TruSeq3-PE.fa:2:3
 
 Explanation of common trimming parameters: 
 
-<img src="https://github.com/user-attachments/assets/013ce5ba-483c-4e31-aede-cf344c9a3eb9" width=75% height=75%>
+<img src="https://github.com/user-attachments/assets/479ad22e-6e98-4bd2-bb30-f1da92b598a5" width=50% height=50%>
 
 <details>
   
