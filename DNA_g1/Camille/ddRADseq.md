@@ -18,7 +18,7 @@ eb -r /apps/easybuild/software/tinkercliffs-rome/EasyBuild/4.9.4/easybuild/easyc
 module load Stacks #testing if install worked
 ```
 # Process radtags 
-If your sequences have already been demultiplexed skip this step. Use this step if given raw reads from Illumina sequencing. In order to run this step you must know what restriction enzymes were used in sequencing. 
+If your sequences have already been demultiplexed (like my data was) skip this step. Use this step if given raw reads from Illumina sequencing. In order to run this step you must know what restriction enzymes were used in sequencing. 
 ```bash
 process_radtags -p ./in_dir -P -b barcodes.txt -o ./out_dir –renz-2 sphI mluCI –threads 16 -q -r -D -t 120
 ```
