@@ -46,15 +46,14 @@ cp /projects/intro2gds/I2GDS2024/pep-seq/rawdata/iris/demo/129755at50557.fas .
 
 ```
 module load Anaconda3 
-conda create -n mafft -c conda-forge -c bioconda mafft
+conda create -n mafft
+source activate mafft
+conda install -c conda-forge -c bioconda mafft
 ```
-### 1.3 Activate the environment 
-
-```source activate mafft```
 
 Use ```mafft --version``` to confirm that the correct version has been installed.
 
-### 1.4 Run Mafft 
+### 1.3 Run Mafft 
 
 ```
 mafft 129755at50557.fas > 129755at50557_aligned.fas
