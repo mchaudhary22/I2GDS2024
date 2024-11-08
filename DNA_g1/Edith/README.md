@@ -1,4 +1,4 @@
-<img src=https://github.com/user-attachments/assets/939601c0-5314-47e8-8fbc-b7464a9e4c8e width=30% height=30%>
+<img src=https://www.nature.com/articles/s41596-019-0223-x/figures/8 width=30% height=30%>
 
 # MOWChIPseq for Histone Modification Profiling
 
