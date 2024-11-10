@@ -1,4 +1,4 @@
-<img src=DNA_g1/Edith/MOWChIP-seq data_H3K79me.webp width=30% height=30%>
+<img src= width=30% height=30%>
 **Figure Source:** [Nature Protocols, 2019](https://www.nature.com/articles/s41596-019-0223-x)
 
 # MOWChIPseq for Histone Modification Profiling
@@ -12,6 +12,15 @@ In order to identify significant histone modications in samples and observe patt
 Contact: Edith Chen (edithchen@vt.edu)
 
 
-## Installing/SetUp
+## Create conda environment
+Python is required to create a conda environment
+
+
+Replace <my-env> with the name of your environment.
+
+```bash
+conda create —name <env> python=3.7.12 --file <this file>
+
+```
 
 
