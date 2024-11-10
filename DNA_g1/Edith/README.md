@@ -1,4 +1,4 @@
-<img src= width=30% height=30%>
+<img src=DNA_g1/Edith/MOWChIP-seq data_H3K79me.webp width=30% height=30%>
 **Figure Source:** [Nature Protocols, 2019](https://www.nature.com/articles/s41596-019-0223-x)
 
 # MOWChIPseq for Histone Modification Profiling
