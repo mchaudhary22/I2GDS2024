@@ -92,7 +92,7 @@ zgrep --no-group-separator -A 3 +$U7 /projects/lu_lab/All_Raw_Sequencing_Data/20
 ## 2.1 Index genome and download additional packages
 
 1. Index genome of interest
-2. Obtain blacklist of genes from genome of interest
+2. Obtain blacklist of genes from genome of interest (i.e., repetitive regions)
 3. fetchChromSizes for genome of interest (*genome.bed file)
 4. bedtools makewindows to separate genome into windows of 100 bp (*genome_100.bed file)
 5. Generate Promoters with promoter.sh (*Promoter.bed file) (for more info read promoter.sh script)
@@ -106,7 +106,8 @@ bowtie2 -p 16 -x /home/gaoshanli/Data/mm10/Sequence/Bowtie2Index/genome -U $PWD/
 The aligned reads are saved in `input.sam`, and any alignment errors are recorded in `alignSumm.log`.
 For further information on bowtiw2, visit: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
 
-The ```preinput.sh``` file is a script that 
+The ```preinput.sh``` file is a script that uses bowtie2 for alignment and performs downstream filtering and analysis.
+After converting the SAM files into BAM files, the alignments are filtered and converted into BED format. This is followed by filtering with blacklist, extending the feature sizes, and completing coverage analysis.
 ```
 sbatch preinput.sh
 ```
