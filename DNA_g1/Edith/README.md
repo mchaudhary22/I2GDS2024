@@ -99,6 +99,8 @@ zgrep --no-group-separator -A 3 +$U7 /projects/lu_lab/All_Raw_Sequencing_Data/20
 
 ## 2.2 Align input samples
 Use ```bowtie2``` to align the input files to the genome index.
+This is FM-index based on Burrows-Wheeler transform.
+It is memory-efficient but slower for longer reads 
 
 ```
 bowtie2 -p 16 -x /home/gaoshanli/Data/mm10/Sequence/Bowtie2Index/genome -U $PWD/Raw_Data/$f$FQ -S $PWD/Aligned_SAM/$f$SAM 2>$PWD/Aligned_SAM/$f$LOG
@@ -113,8 +115,25 @@ sbatch preinput.sh
 ```
 Use ```squeue``` to check the status of the processing on linux.
 
-## 2.3 Align ChIP samples
+# 3. MACS2 for ChIP samples
+MACS2 is a program for peak calling; specifically it is computational method to identify areas in the genome that have been enriched with aligned reads.
+
+
+```
+macs2 callpeak -t $PWD/BED/$f$BED -c /projects/intro2gds/DNAGroup/ChIP-seq/rawdata/Jenna/ESC/input/input.bed -f BED -g mm -n $f -q 0.05 --outdir $PWD/MACS
+```
+For further information please visit: https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html
 
 ```
 sbatch base_precorr.sh
 ```
+
+# 4. IGB
+The Integrated Genome Browser (IGB) can be used to explore & visually analyze vast genomic data and biologically-interesting patterns.
+To download IGB, visit: https://www.bioviz.org/
+
+Choose species and genome version. To choose a species and genome version. ...
+Open data sets. Open data sets from remote data sources (Data Access tab) or by opening local files. ...
+Zoom in. ...
+Load data. ...
+Configure tracks.
