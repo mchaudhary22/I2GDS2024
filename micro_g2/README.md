@@ -183,3 +183,61 @@ sample_data$Species <- ifelse(sample_data$Species == 'boo', 'L. booriae',
 </details>
 <p></p>
 
+<details>
+    <summary>Step 2: Creating an ordination plot comparing the beta diversity of 2 groups</summary>
+
+```
+# Identify empty rows
+empty_rows <- which(rowSums(otu_table(boo_wels_o_phyobj)) == 0)
+
+# Filter out empty rows
+boo_wels_o_phyobj_bray_pcoa <- prune_samples(sample_names(boo_wels_o_phyobj)[-empty_rows], boo_wels_o_phyobj)
+
+# Perform ordination on the filtered data
+ordination1 <- ordinate(boo_wels_o_phyobj_bray_pcoa, method = "PCoA", distance = "bray")
+
+# Create the plot
+plot1 <- plot_ordination(boo_wels_o_phyobj_bray_pcoa, ordination1, color="Species", title="Bray PCoA") +
+  geom_point(size=2) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),  # Remove grid lines
+    axis.line = element_line(color = "black"),  # Add axis lines
+    panel.border = element_rect(color = "black", fill = NA)
+  )
+
+# Add 95% CI around the data points
+plot1 <- plot1 + stat_ellipse(level = 0.95)
+
+# Calculate Bray-Curtis dissimilarity
+braydist <- phyloseq::distance(boo_wels_o_phyobj, method = "bray")
+
+# Perform PERMANOVA
+permanova_result <- adonis2(braydist ~ Species, data = sample_data, permutations = 999)
+
+# Extract p-value from PERMANOVA result
+p_value <- permanova_result$`Pr(>F)`
+p_value <- p_value[!is.na(p_value)]
+
+# Add p-value annotation to the plot
+plot1 <- plot1 +
+  annotate(
+    "text",
+    x = 0.15,
+    y = -0.5,
+    label = paste("PERMANOVA P =", p_value),
+    size = 4.5  # Increase the font size
+  )
+
+# Safe the plot
+ggsave("bray_pcoa_plot.png", plot = plot1, device = "png", width = 8, height = 6)
+
+# Show the plot
+plot1
+```
+
+</details>
+<p></p>
+
+The output plot should look like the example below:
+![image](https://github.com/user-attachments/assets/e4017ae7-79c1-4be2-9d5d-4e40a38321a0)
