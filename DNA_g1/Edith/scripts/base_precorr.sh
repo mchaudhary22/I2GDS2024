@@ -102,4 +102,4 @@ bedGraphToBigWig $PWD/BedGraph/$f$BedG /home/gaoshanli/Data/bed_winbed/mm10/mm10
 
 done
 
-/projects/lu_lab/Gaoshan/MIA/ChIP_seq/Summary_enhancer.sh .
+/projects/lu_lab/edith/MIA/ChIP_seq/Summary_enhancer.sh .
