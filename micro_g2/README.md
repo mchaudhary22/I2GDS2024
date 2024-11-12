@@ -143,9 +143,13 @@ This section explains the packages used and how the scatterplot and heatmap were
 
 ## Packages information
 Ensure the following packages are installed and loaded:
-- `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats. We need this for reading `phyloseq` object (.rds files in `r_studio/data`)
-- `ggplot2`: For creating complex and customizable visualizations using the Grammar of Graphics.
-- `vegan`: For ecological data analysis, offering tools for diversity analysis, ordination, and statistical analysis. We need this for beta diversity ordination analysis.
+- For creating scatter plot:
+  -  `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats. We need this for reading `phyloseq` object (.rds files in `r_studio/data`)
+  - `ggplot2`: For creating complex and customizable visualizations using the Grammar of Graphics.
+  - `vegan`: For ecological data analysis, offering tools for diversity analysis, ordination, and statistical analysis. We need this for beta diversity ordination analysis.
+- For creating heatmap:
+  - `pheatmap`: For creating heatmaps with additional customization options for annotating rows and columns, adjusting color schemes, clustering, and scaling. It simplifies the process of generating visually informative heatmaps from data matrices.
+  - `reshape2`: For transforming data between wide and long formats, which is often necessary for preparing data for visualization or analysis. It includes functions like melt (to reshape data from wide to long format) and dcast (to go from long to wide format), making it easier to manipulate data frames.
 
 > [!NOTE]
 > You can install a package using code like the example below. Here’s how to install `phyloseq`:
@@ -157,6 +161,7 @@ Ensure the following packages are installed and loaded:
 > ```
 
 ## Scatter plot
+- Input: `boo_wels_o_phyloseq.rds`, `boo_wels_o_taxa.rds`, `boo_wels_o_sample.names.rds`, and `meta_data_2.csv`.
 <details>
     <summary>Step 1: Loading packages and setting working directory</summary>
 
@@ -241,3 +246,42 @@ plot1
 
 The output plot should look like the example below:
 ![image](https://github.com/user-attachments/assets/e4017ae7-79c1-4be2-9d5d-4e40a38321a0)
+
+## Heatmap
+- Input: `arg_pre_abs.csv`
+<details>
+    <summary>Loading packages and creating heatmapy</summary>
+
+```
+# Load the library
+library(ggplot2)
+library(reshape2)
+library(pheatmap)
+
+# Load the data
+data <- read.csv("arg_pre_abs.csv", row.names = 1)
+
+# Convert data to matrix
+data_matrix <- as.matrix(data)
+
+# Generate the heatmap
+plot_2 <- pheatmap(
+  data_matrix,
+  color = colorRampPalette(c("lightgrey", "navy"))(50), # Color gradient
+  cluster_rows = FALSE,                              # Add row dendrogram
+  cluster_cols = FALSE,                              # Add column dendrogram
+  main = "Heatmap of Antimicrobial Resistance Genes", # Title
+  fontsize_row = 8,                                 # Row font size
+  fontsize_col = 8,                                 # Column font size
+  border_color = NA                                 # Remove lines inside the heatmap
+)
+
+# Safe the plot
+ggsave("heatmap.png", plot = plot_2, device = "png", width = 8, height = 6)
+```
+
+</details>
+<p></p>
+
+The output plot should look like the example below:
+![image](https://github.com/user-attachments/assets/b05e9af1-116b-4cb3-b7ed-5e7926820e09)
