@@ -133,3 +133,14 @@ For this tutorial, we used three of the four draft genomes from [this publicatio
 
 > [!NOTE]
 > The example `quality_report.tsv` output file was also provided in the `code_linux/` directory for your reference.
+
+-----
+
+# Creating scatter plot and heatmap using RStudio
+## Dependencies & version information
+Ensure the following dependencies are installed to run the pipeline:
+- fastp v.0.23.4
+- SPAdes v.4.0.0
+- CheckM2 v.1.0.2
+
+
