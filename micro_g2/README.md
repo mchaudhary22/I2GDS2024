@@ -250,7 +250,7 @@ The output plot should look like the example below:
 ## Heatmap
 - Input: `arg_pre_abs.csv`
 <details>
-    <summary>Loading packages and creating heatmapy</summary>
+    <summary>Loading packages and creating heatmap</summary>
 
 ```
 # Load the library
