@@ -136,11 +136,30 @@ For this tutorial, we used three of the four draft genomes from [this publicatio
 
 -----
 
-# Creating scatter plot and heatmap using RStudio
-## Dependencies & version information
-Ensure the following dependencies are installed to run the pipeline:
-- fastp v.0.23.4
-- SPAdes v.4.0.0
-- CheckM2 v.1.0.2
+## Creating scatter plot and heatmap using RStudio
+Contact: Ying-Xian Goh (yingxian@vt.edu), Saehah Yi (shyi@vt.edu), or Clayton Markham (cjmarkham@vt.edu)
+
+This section explains the packages used and how the scatterplot and heatmap were generated for our data. All the data and code needed for these visualizations can be found in the `r_studio/data` and `r_studio/code` directories, respectively.
+
+## Packages information
+Ensure the following packages are installed and loaded:
+- `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats.
+- `ggplot2`: For creating complex and customizable visualizations using the Grammar of Graphics.
+- `cowplot`: An extension of `ggplot2` that simplifies combining multiple plots into one figure, ideal for creating multi-panel layouts.
+- `ggpubr`: Adds additional functionalities to `ggplot2`, particularly for comparing means, which is useful for statistical annotations in boxplots and other plots.
+- `vegan`: A package for ecological data analysis, offering tools for diversity analysis, ordination, and statistical analysis.
+
+> [!NOTE]
+> You can install a package using code like the example below. Here’s how to install `phyloseq`:
+> ```
+> if (!require("BiocManager", quietly = TRUE))
+>     install.packages("BiocManager")
+>
+> BiocManager::install("phyloseq")
+> ```
+
+## Scatter plot
+
+
 
 
