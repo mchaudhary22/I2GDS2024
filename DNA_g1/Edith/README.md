@@ -13,11 +13,28 @@ In order to identify significant histone modications in samples and observe patt
 
 Contact: Edith Chen (edithchen@vt.edu)
 
-# 1 Setup/ Preparation
+# 1. Setup/Preparation
 
-## Create conda environment
+## 1.1 Create directories
+For each project, it is important to have your own directory for the samples and scripts.
+
+```
+mkdir MOWChIP_practice
+cd MOWChIP_practice
+
+mkdir scripts
+mkdir results
+mkdir rawdata
+
+cd rawdata
+mkdir input
+mkdir chip
+```
+The input samples are samples that has not been while the chip samples are samples with MOWChIP.
+
+## 1.2 Create conda environment
 A conda environment is a directory that contains a specific set of software packages, including libraries, dependencies, and Python versions.
-This enables easy access to the specific versions of software packages needed for a project. For ChIP-seq analysis, I utilised the file ```spec_
+This enables easy access to the specific versions of software packages needed for a project. For ChIP-seq analysis, I utilised the file ```spec_environment.txt```.
 
 To create an environment:
 
@@ -26,14 +43,47 @@ conda create --name <my-env>
 ```
 Replace <my-env> with the name of your environment.
 
-
-For downloading 
+For downloading with the file of the list of packages, replace <this file> with the name of the file.
 
 ```bash
 conda create —name <env> python=3.7.12 --file <this file>
-
+conda create —name <env> python=3.7.12 --file `spec_environment.txt
 ```
-Replace <this file> with the name of your file.
 
+For further information on managing conda environments, please visit https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html.
 
+## 1.3.1 Download Sample Data
 
+Each data sample used in papers will be accompanied with a GEO accession number.
+Search for the GEO number/code on the GEO website: http://www.ncbi.nlm.nih.gov/geo/
+
+Then a page for that Series will load with a ‘Samples’ section. Click the ‘More’ link if necessary to see all the samples in the entry. 
+Obtain the SRR numbers for each sample and search for it on the European Nucleotide Archive (EBI) SRA page: http://www.ebi.ac.uk/ena/data/view/SRR_number.
+
+On the following page, look for the fastq files (ftp) link and right-click on the link. A pop-up menu will appear and select 'Copy Link.:
+
+Retrieve the file under designated folder using wget:
+```
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR494/SRR494099/SRR494099.fastq.gz
+```
+
+For further information, please visit https://www.imm.ox.ac.uk/files/ccb/downloading_fastq_geo
+
+## 1.3.2 Original Data
+
+If you are using your own samples instead of those from papers, directly upload the data into the designated folder.
+If demultiplexing is needed, use the following code:
+```
+zgrep  --no-group-separator -A 3 +<index sequence> /path-to-current-directory/ /path-to-designated-sample-directory/filename
+```
+
+Examples: 
+```
+zgrep --no-group-separator -A 3 +TAAGGCTC /projects/lu_lab/All_Raw_Sequencing_Data/20240613_Novogene_GL_XZ_EC/Undetermined_1.fq.gz>/projects/lu_lab/Gaoshan/scChIPs/bulk/H3K4me3/0.5Tn5_barcode_oligo_R1.fastq
+
+U7=CAAGCTAGATCT +CGCTATGT
+zgrep --no-group-separator -A 3 +$U7 /projects/lu_lab/All_Raw_Sequencing_Data/20240822_Novogene_GL_JN_XZ_EC/undetermined_1.fq.gz>/projects/lu_lab/edith/Practice/MOWChIP/rawdata/chip/ChIP1_0628_R1_5.fastq
+```
+
+# 2. Alignment
+## 2.1 Prepare input samples
