@@ -254,7 +254,6 @@ The output plot should look like the example below:
 
 ```
 # Load the library
-library(ggplot2)
 library(reshape2)
 library(pheatmap)
 
