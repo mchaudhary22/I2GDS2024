@@ -1,4 +1,4 @@
-<img src= width=30% height=30%>
+<img src=https://github.com/edie33/I2GDS2024/blob/172ac6b81c2696d4bea1f83c07414a12f0618856/DNA_g1/Edith/Images/mowchip_pearson.png width=45% height=40%>
 **Figure Source:** [Nature Protocols, 2019](https://www.nature.com/articles/s41596-019-0223-x)
 
 # MOWChIPseq for Histone Modification Profiling
