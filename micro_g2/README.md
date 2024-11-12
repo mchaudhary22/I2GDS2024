@@ -139,15 +139,13 @@ For this tutorial, we used three of the four draft genomes from [this publicatio
 ## Creating scatter plot and heatmap using RStudio
 Contact: Ying-Xian Goh (yingxian@vt.edu), Saehah Yi (shyi@vt.edu), or Clayton Markham (cjmarkham@vt.edu)
 
-This section explains the packages used and how the scatterplot and heatmap were generated for our data. All the data and code needed for these visualizations can be found in the `r_studio/data` and `r_studio/code` directories, respectively.
+This section explains the packages used and how the scatterplot and heatmap were generated for our data. All the data and code (written in R notebook) needed for these visualizations can be found in the `r_studio/data` and `r_studio/code` directories, respectively.
 
 ## Packages information
 Ensure the following packages are installed and loaded:
-- `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats.
+- `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats. We need this for reading `phyloseq` object (.rds files in `r_studio/data`)
 - `ggplot2`: For creating complex and customizable visualizations using the Grammar of Graphics.
-- `cowplot`: An extension of `ggplot2` that simplifies combining multiple plots into one figure, ideal for creating multi-panel layouts.
-- `ggpubr`: Adds additional functionalities to `ggplot2`, particularly for comparing means, which is useful for statistical annotations in boxplots and other plots.
-- `vegan`: A package for ecological data analysis, offering tools for diversity analysis, ordination, and statistical analysis.
+- `vegan`: For ecological data analysis, offering tools for diversity analysis, ordination, and statistical analysis. We need this for beta diversity ordination analysis.
 
 > [!NOTE]
 > You can install a package using code like the example below. Here’s how to install `phyloseq`:
@@ -159,7 +157,29 @@ Ensure the following packages are installed and loaded:
 > ```
 
 ## Scatter plot
+<details>
+    <summary>Step 1: Loading packages and setting working directory</summary>
 
+```
+# Load the packages
+library(phyloseq)
+library(ggplot2)
+library(vegan)
 
+# Setting working directory
+setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located
 
+# Loading data/ Calling the object
+boo_wels_o_phyobj <- readRDS("boo_wels_o_phyloseq.rds")
+taxa <- readRDS("boo_wels_o_taxa.rds")
+sample.names <- readRDS("boo_wels_o_sample.names.rds")
+
+sample_data <- read.csv("meta_data_2.csv")
+sample_data$Species <- ifelse(sample_data$Species == 'boo', 'L. booriae', 
+                              ifelse(sample_data$Species == 'wels', 'L. welshimeri', 
+                                     sample_data$Species))
+```
+
+</details>
+<p></p>
 
