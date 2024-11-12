@@ -45,6 +45,9 @@ For this tutorial, we used three of the four draft genomes from [this publicatio
 - `fastp.py`: Python script to handle raw FASTQ data and run **fastp** for adapter identification and quality control.
     - This script will look for the files in the specified directory, automatically identify adapters, trim adapters, and run quality control.
     - Specify/modify the path to locate **fastp** and change the input and output directories in `fastp.py` before use.
+    > [!NOTE]
+    > `fastp.py` is a Bash script that we wrote to automate fastp. It is different from the fastp software that you downloaded in the previous step using`wget http://opengene.org/fastp/fastp`
+    
   - **Input**: FASTQ files (either single-end or paired-end)
     - For single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
     - For paired-end data, also specify read2 input by `-I` or `--in2`, and specify read2 output by `-O` or `--out2`.
