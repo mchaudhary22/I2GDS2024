@@ -1,5 +1,5 @@
 ---
-title: "Creating scatter plots"
+title: "Creating scatter plots and heatmap"
 output: html_notebook
 ---
 
