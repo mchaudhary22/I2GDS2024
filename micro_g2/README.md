@@ -47,7 +47,7 @@ For this tutorial, we used three of the four draft genomes from [this publicatio
     - Specify/modify the path to locate **fastp** and change the input and output directories in `fastp.py` before use.
 
    > [!NOTE]
-    > `fastp.py` is a Bash script that we wrote to automate fastp. It is different from the fastp software that you downloaded in the previous step using`wget http://opengene.org/fastp/fastp`
+   > `fastp.py` is a Bash script that we wrote to automate fastp. It is different from the fastp software that you downloaded in the previous step using`wget http://opengene.org/fastp/fastp`
     
   - **Input**: FASTQ files (either single-end or paired-end)
     - For single-end data, specify read1 input by `-i` or `--in1`, and specify read1 output by `-o` or `--out1`.
