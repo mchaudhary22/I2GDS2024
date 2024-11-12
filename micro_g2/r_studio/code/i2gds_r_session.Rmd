@@ -14,8 +14,6 @@ output: html_notebook
 ```{r}
 library(phyloseq)
 library(ggplot2)
-library(cowplot) # for combining plots
-library(ggpubr) # for comparing means in the boxplot
 library(vegan)
 
 setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located
@@ -74,6 +72,37 @@ plot1 <- plot1 +
     size = 4.5  # Increase the font size
   )
 
+# Safe the plot
+ggsave("bray_pcoa_plot.png", plot = plot1, device = "png", width = 8, height = 6)
+
 # Show the plot
 plot1
+```
+
+# Creating a heatmap for presence/absence matrix
+```{r}
+# Load the library
+library(reshape2)
+library(pheatmap)
+
+# Load the data
+data <- read.csv("arg_pre_abs.csv", row.names = 1)
+
+# Convert data to matrix
+data_matrix <- as.matrix(data)
+
+# Generate the heatmap
+plot_2 <- pheatmap(
+  data_matrix,
+  color = colorRampPalette(c("lightgrey", "navy"))(50), # Color gradient
+  cluster_rows = FALSE,                              # Add row dendrogram
+  cluster_cols = FALSE,                              # Add column dendrogram
+  main = "Heatmap of Antimicrobial Resistance Genes", # Title
+  fontsize_row = 8,                                 # Row font size
+  fontsize_col = 8,                                 # Column font size
+  border_color = NA                                 # Remove lines inside the heatmap
+)
+
+# Safe the plot
+ggsave("heatmap.png", plot = plot_2, device = "png", width = 8, height = 6)
 ```
