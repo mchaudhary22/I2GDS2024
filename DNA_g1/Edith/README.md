@@ -47,15 +47,18 @@ For downloading with the file of the list of packages, replace <this file> with 
 
 ```bash
 conda create —name <env> python=3.7.12 --file <this file>
-conda create —name <env> python=3.7.12 --file `spec_environment.txt
+conda create —name chipseq python=3.7.12 --file `spec_environment.txt
 ```
 
 For further information on managing conda environments, please visit https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html.
 
 ## 1.3.1 Download Sample Data
+The demo data set is from the Zhu et al., Nature Protocols 2019. can be found at: 
 
+For information downloading the sample data from the paper
 Each data sample used in papers will be accompanied with a GEO accession number.
 Search for the GEO number/code on the GEO website: http://www.ncbi.nlm.nih.gov/geo/
+For this practice, the GEO code is GSE123606.
 
 Then a page for that Series will load with a ‘Samples’ section. Click the ‘More’ link if necessary to see all the samples in the entry. 
 Obtain the SRR numbers for each sample and search for it on the European Nucleotide Archive (EBI) SRA page: http://www.ebi.ac.uk/ena/data/view/SRR_number.
@@ -86,4 +89,31 @@ zgrep --no-group-separator -A 3 +$U7 /projects/lu_lab/All_Raw_Sequencing_Data/20
 ```
 
 # 2. Alignment
-## 2.1 Prepare input samples
+## 2.1 Index genome and download additional packages
+
+1. Index genome of interest
+2. Obtain blacklist of genes from genome of interest
+3. fetchChromSizes for genome of interest (*genome.bed file)
+4. bedtools makewindows to separate genome into windows of 100 bp (*genome_100.bed file)
+5. Generate Promoters with promoter.sh (*Promoter.bed file) (for more info read promoter.sh script)
+
+## 2.2 Align input samples
+Use ```bowtie2``` to align the input files to the genome index.
+
+```
+bowtie2 -p 16 -x /home/gaoshanli/Data/mm10/Sequence/Bowtie2Index/genome -U $PWD/Raw_Data/$f$FQ -S $PWD/Aligned_SAM/$f$SAM 2>$PWD/Aligned_SAM/$f$LOG
+```
+The aligned reads are saved in `input.sam`, and any alignment errors are recorded in `alignSumm.log`.
+For further information on bowtiw2, visit: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+
+The ```preinput.sh``` file is a script that 
+```
+sbatch preinput.sh
+```
+Use ```squeue``` to check the status of the processing on linux.
+
+## 2.3 Align ChIP samples
+
+```
+sbatch base_precorr.sh
+```
