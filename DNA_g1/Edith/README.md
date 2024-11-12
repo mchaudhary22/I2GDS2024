@@ -1,5 +1,5 @@
-<img src=https://github.com/edie33/I2GDS2024/blob/172ac6b81c2696d4bea1f83c07414a12f0618856/DNA_g1/Edith/Images/mowchip_pearson.png width=55% height=40%>
-**Figure Source:** [Nature Protocols, 2019](https://www.nature.com/articles/s41596-019-0223-x)
+<img src=https://github.com/edie33/I2GDS2024/blob/2212aa7db42493e201af9c4fe8e528271acde41b/DNA_g1/Edith/images/pipeline.png width=65% height=40%>
+
 
 # MOWChIPseq for Histone Modification Profiling
 
@@ -87,7 +87,7 @@ zgrep --no-group-separator -A 3 +TAAGGCTC /projects/lu_lab/All_Raw_Sequencing_Da
 U7=CAAGCTAGATCT +CGCTATGT
 zgrep --no-group-separator -A 3 +$U7 /projects/lu_lab/All_Raw_Sequencing_Data/20240822_Novogene_GL_JN_XZ_EC/undetermined_1.fq.gz>/projects/lu_lab/edith/Practice/MOWChIP/rawdata/chip/ChIP1_0628_R1_5.fastq
 ```
-<img src=https://github.com/edie33/I2GDS2024/blob/2212aa7db42493e201af9c4fe8e528271acde41b/DNA_g1/Edith/images/pipeline.png width=45% height=40%>
+
 
 # 2. Alignment
 ## 2.1 Index genome and download additional packages
@@ -141,3 +141,6 @@ Zoom in. ...
 Load data. ...
 Configure tracks.
 <img src=https://github.com/edie33/I2GDS2024/blob/0b34aa4bcbbfbfb84e00789bd7d94a8efd51bc4e/DNA_g1/Edith/images/igb2.png width=65% height=40%>
+
+<img src=https://github.com/edie33/I2GDS2024/blob/172ac6b81c2696d4bea1f83c07414a12f0618856/DNA_g1/Edith/Images/mowchip_pearson.png width=55% height=40%>
+**Figure Source:** [Nature Protocols, 2019](https://www.nature.com/articles/s41596-019-0223-x)
