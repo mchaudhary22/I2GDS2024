@@ -1,8 +1,10 @@
-## Pipeline for assembling short read sequence data
+## Pipeline for assembling and visualizing short read sequencing data
 
 Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or Saehah Yi (shyi@vt.edu)
 
-This pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of short read sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
+**Part 1** of this pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of short read sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
+
+**Part 2** of the pipeline provides two examples of how to visualize the data: beta diversity ordination plots (a type of scatterplot) and heatmaps. All the code needed for this pipeline can be found at the `r_studio/` directory.
 
 > [!NOTE]
 > This repo was developed as part of the curriculum for Virginia Tech’s Introduction to Genomic Data Science course. Please make sure the script paths, data files, and working directory are correctly specified for smooth execution.
