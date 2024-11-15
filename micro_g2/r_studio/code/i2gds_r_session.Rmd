@@ -16,7 +16,7 @@ library(phyloseq)
 library(ggplot2)
 library(vegan)
 
-setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located
+setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located. Make sure to change '\' to '/'
 
 boo_wels_o_phyobj <- readRDS("boo_wels_o_phyloseq.rds")
 taxa <- readRDS("boo_wels_o_taxa.rds")
@@ -72,7 +72,7 @@ plot1 <- plot1 +
     size = 4.5  # Increase the font size
   )
 
-# Safe the plot
+# Save the plot
 ggsave("bray_pcoa_plot.png", plot = plot1, device = "png", width = 8, height = 6)
 
 # Show the plot
@@ -103,6 +103,6 @@ plot_2 <- pheatmap(
   border_color = NA                                 # Remove lines inside the heatmap
 )
 
-# Safe the plot
+# Save the plot
 ggsave("heatmap.png", plot = plot_2, device = "png", width = 8, height = 6)
 ```
