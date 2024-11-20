@@ -16,7 +16,7 @@ library(phyloseq)
 library(ggplot2)
 library(vegan)
 
-setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located. Make sure to change '\' to '/'
+setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located. Make sure to change any '\' to '/'
 
 boo_wels_o_phyobj <- readRDS("boo_wels_o_phyloseq.rds")
 taxa <- readRDS("boo_wels_o_taxa.rds")
