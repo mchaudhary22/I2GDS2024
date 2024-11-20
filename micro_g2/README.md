@@ -4,7 +4,7 @@ Contact: Ying-Xian Goh (yingxian@vt.edu), Clayton Markham (cjmarkham@vt.edu), or
 
 **Part 1** of this pipeline integrates three essential tools — fastp, SPAdes, and CheckM2 — to ensure comprehensive processing and assessment of short read sequencing data. It begins by evaluating and trimming sequencing quality and adapters using fastp, followed by read assembly with SPAdes, and concludes with an analysis of assembly quality, specifically contamination and completeness, using CheckM2. All the code needed for this pipeline can be found at the `code_linux/` directory.
 
-**Part 2** of the pipeline provides two examples of how to visualize the data: beta diversity ordination plots (a type of scatterplot) and heatmaps. All the code needed for this pipeline can be found at the `r_studio/` directory.
+**Part 2** of the pipeline provides two examples of how to visualize the data: beta diversity ordination plots (a type of scatterplot) and heatmaps. All the code and data needed for this pipeline can be found at the `r_studio/` directory.
 
 > [!NOTE]
 > This repo was developed as part of the curriculum for Virginia Tech’s Introduction to Genomic Data Science course. Please make sure the script paths, data files, and working directory are correctly specified for smooth execution.
@@ -141,15 +141,15 @@ For this tutorial, we used three of the four draft genomes from [this publicatio
 ## Creating scatter plot and heatmap using RStudio
 Contact: Ying-Xian Goh (yingxian@vt.edu), Saehah Yi (shyi@vt.edu), or Clayton Markham (cjmarkham@vt.edu)
 
-This section explains the packages used and how the scatterplot and heatmap were generated for our data. All the data and code (written in R notebook) needed for these visualizations can be found in the `r_studio/data` and `r_studio/code` directories, respectively.
+This section explains the packages used and how the scatterplot and heatmap were generated for our data. All the data and code (written in R Notebook) needed for these visualizations can be found in the `r_studio/data` and `r_studio/code` directories, respectively.
 
 ## Packages information
 Ensure the following packages are installed and loaded:
-- For creating scatter plot:
-  -  `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats. We need this for reading `phyloseq` object (.rds files in `r_studio/data`)
+- For ordination plot:
+  -  `phyloseq`: For handling and analyzing microbiome data, specifically designed for ecological and genomic data formats. We need this for reading the `phyloseq` object (.rds files in `r_studio/data`)
   - `ggplot2`: For creating complex and customizable visualizations using the Grammar of Graphics.
   - `vegan`: For ecological data analysis, offering tools for diversity analysis, ordination, and statistical analysis. We need this for beta diversity ordination analysis.
-- For creating heatmap:
+- For heatmap:
   - `pheatmap`: For creating heatmaps with additional customization options for annotating rows and columns, adjusting color schemes, clustering, and scaling. It simplifies the process of generating visually informative heatmaps from data matrices.
   - `reshape2`: For transforming data between wide and long formats, which is often necessary for preparing data for visualization or analysis. It includes functions like melt (to reshape data from wide to long format) and dcast (to go from long to wide format), making it easier to manipulate data frames.
 
@@ -163,7 +163,8 @@ Ensure the following packages are installed and loaded:
 > ```
 
 ## Scatter plot
-- Input: `boo_wels_o_phyloseq.rds`, `boo_wels_o_taxa.rds`, `boo_wels_o_sample.names.rds`, and `meta_data_2.csv`.
+- Inputs: `boo_wels_o_phyloseq.rds`, `boo_wels_o_taxa.rds`, `boo_wels_o_sample.names.rds`, and `meta_data_2.csv`.
+
 <details>
     <summary>Step 1: Loading packages and setting working directory</summary>
 
@@ -174,7 +175,7 @@ library(ggplot2)
 library(vegan)
 
 # Setting working directory
-setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located
+setwd("/Users/Windows10/rstudio/i2gds/project_microplastic/") # change this to your working directory - the place where all your files are located. Make sure to change any '\' to '/'
 
 # Loading data/ Calling the object
 boo_wels_o_phyobj <- readRDS("boo_wels_o_phyloseq.rds")
@@ -236,7 +237,7 @@ plot1 <- plot1 +
     size = 4.5  # Increase the font size
   )
 
-# Safe the plot
+# Save the plot
 ggsave("bray_pcoa_plot.png", plot = plot1, device = "png", width = 8, height = 6)
 
 # Show the plot
@@ -277,7 +278,7 @@ plot_2 <- pheatmap(
   border_color = NA                                 # Remove lines inside the heatmap
 )
 
-# Safe the plot
+# Save the plot
 ggsave("heatmap.png", plot = plot_2, device = "png", width = 8, height = 6)
 ```
 
