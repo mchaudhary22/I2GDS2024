@@ -3,7 +3,7 @@ title: "Creating scatter plots and heatmap"
 output: html_notebook
 ---
 
-# Install the required package - phyloseq. Uncomment this code snip-it if you need it.
+# Install the required package - phyloseq. Uncomment this code snippet if you need it.
 ```{r}
 #if (!require("BiocManager", quietly = TRUE))
 #    install.packages("BiocManager")
