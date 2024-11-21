@@ -166,7 +166,7 @@ Ensure the following packages are installed and loaded:
 - Inputs: `boo_wels_o_phyloseq.rds`, `boo_wels_o_taxa.rds`, `boo_wels_o_sample.names.rds`, and `meta_data_2.csv`.
 
 <details>
-    <summary>Step 1: Loading packages and setting working directory</summary>
+    <summary>Step 1: Loading packages, setting working directory, and loading dataset </summary>
 
 ```
 # Load the packages
